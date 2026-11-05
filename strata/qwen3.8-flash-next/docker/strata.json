@@ -1,0 +1,27 @@
+{
+  "exe": "/opt/strata/engine/strata",
+  "args": [
+    "--pack", "/data/pack",
+    "--native", "/data/model/Qwen3.8-Flash-Next-UD-IQ4_XS-00001-of-00003.gguf",
+    "--expert-profile", "/opt/strata/data/expert-profile.bin",
+    "--expert-cache", "auto",
+    "--prefill", "auto",
+    "--spec", "4",
+    "--spec-min-p", "0.5",
+    "--mtp", "/data/mtp",
+    "--max-context", "524288",
+    "--rope-scaling", "yarn",
+    "--rope-scale", "2",
+    "--kv", "int8",
+    "--resident-budget-gib", "12"
+  ],
+  "cwd": "/opt/strata",
+  "tokenizer": "/data/pack/tokenizer",
+  "model_name": "qwen3.8-flash-next-unsloth-ud-iq4_xs",
+  "log": "/opt/strata/logs/strata.log",
+  "host": "127.0.0.1",
+  "port": 8080,
+  "gpu": [0, 1],
+  "layer_split": "auto",
+  "gpus_asked": true
+}

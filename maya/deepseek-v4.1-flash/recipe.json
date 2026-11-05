@@ -1,0 +1,15 @@
+{
+  "schema": "local-llm.recipe/1",
+  "id": "maya/deepseek-v4.1-flash",
+  "kind": "maya-deepseek",
+  "api_model": "deepseek-v4.1-flash-1017",
+  "config": "logs/maya-deepseek-1017.json",
+  "python": ".venv/bin/python",
+  "python_env": ["MAYA_PYTHON", "DS41_PYTHON"],
+  "locks": ["logs/service.lock"],
+  "source_revision": "c4effee67cb95fb4303720919b075fddf04b4e69",
+  "min_free_mib": 84000,
+  "config_sha256": "fe54afc5dcdfb9ff44ffc9007b2569a4eebf1e45755a75fe2e9399ab33191682",
+  "model_directory": "DeepSeek-V4.1-Flash-1017",
+  "model_revision": "c178a01284fc5c0e859d8668cffaac81ca8f4042"
+}

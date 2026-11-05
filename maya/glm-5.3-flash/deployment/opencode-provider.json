@@ -1,0 +1,33 @@
+{
+  "name": "Project Maya GLM (local)",
+  "package": "@opencode/ai/providers/openai-compatible",
+  "settings": {
+    "baseURL": "http://127.0.0.1:8080/v1",
+    "headerTimeout": 900000,
+    "chunkTimeout": 900000
+  },
+  "models": {
+    "glm-5.3-flash": {
+      "name": "GLM 5.3 Flash Maya-L IQ3_S (local, 512K)",
+      "capabilities": {
+        "tools": true,
+        "input": ["text"],
+        "output": ["text"],
+        "reasoning": {"supported": true}
+      },
+      "compatibility": {
+        "reasoningField": "reasoning_content",
+        "maxTokensField": "max_tokens"
+      },
+      "limit": {"context": 524288, "input": 516088, "output": 8192},
+      "body": {
+        "reasoning_effort": "none",
+        "chat_template_kwargs": {"enable_thinking": false}
+      },
+      "variants": [
+        {"id": "fast", "body": {"reasoning_effort": "none", "chat_template_kwargs": {"enable_thinking": false}}},
+        {"id": "thinking", "body": {"reasoning_effort": "high", "chat_template_kwargs": {"enable_thinking": true}}}
+      ]
+    }
+  }
+}

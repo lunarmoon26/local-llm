@@ -1,0 +1,2568 @@
+{
+  "repository": "https://github.com/cliecy/DeepSeek-V4.1-Flash-1017-2xRTXPRO6000",
+  "commit": "c3a37665c93b49a3dbc63d0f0c92d036475b2fc6",
+  "measured_date": "2026-10-18",
+  "model": "cliecy/DeepSeek-V4.1-Flash-1017-EXL3-3bpw-2xRTXPRO6000",
+  "model_revision": "4d8987a359ac7acd1ab3c1c97a898e5ae3db5d05",
+  "reference_temperature": 0,
+  "reference_concurrency": 8,
+  "budgets": {
+    "off": 2048,
+    "on": 16384,
+    "tools": 1024
+  },
+  "sampling_seed": 1234,
+  "datasets": {
+    "openai/gsm8k": "740312add88f781978c0658806c59bc2815b9866",
+    "HuggingFaceH4/MATH-500": "6e4ed1a2a79af7d8630a6b768ec859cb5af4d3be",
+    "openai/openai_humaneval": "7dce6050a7d6d172f3cc5c32aa97f52fa1a2e544",
+    "TIGER-Lab/MMLU-Pro": "b189ec765aa7ed75c8acfea42df31fdae71f97be",
+    "ceval/ceval-exam": "617524a00b307ff6f9933702f724131fe12ca7ce"
+  },
+  "ceval_subject_files": [
+    "accountant/val-00000-of-00001.parquet",
+    "advanced_mathematics/val-00000-of-00001.parquet",
+    "art_studies/val-00000-of-00001.parquet",
+    "basic_medicine/val-00000-of-00001.parquet",
+    "business_administration/val-00000-of-00001.parquet",
+    "chinese_language_and_literature/val-00000-of-00001.parquet",
+    "civil_servant/val-00000-of-00001.parquet",
+    "clinical_medicine/val-00000-of-00001.parquet",
+    "college_chemistry/val-00000-of-00001.parquet",
+    "college_economics/val-00000-of-00001.parquet",
+    "college_physics/val-00000-of-00001.parquet",
+    "college_programming/val-00000-of-00001.parquet",
+    "computer_architecture/val-00000-of-00001.parquet",
+    "computer_network/val-00000-of-00001.parquet",
+    "discrete_mathematics/val-00000-of-00001.parquet",
+    "education_science/val-00000-of-00001.parquet",
+    "electrical_engineer/val-00000-of-00001.parquet",
+    "environmental_impact_assessment_engineer/val-00000-of-00001.parquet",
+    "fire_engineer/val-00000-of-00001.parquet",
+    "high_school_biology/val-00000-of-00001.parquet",
+    "high_school_chemistry/val-00000-of-00001.parquet",
+    "high_school_chinese/val-00000-of-00001.parquet",
+    "high_school_geography/val-00000-of-00001.parquet",
+    "high_school_history/val-00000-of-00001.parquet",
+    "high_school_mathematics/val-00000-of-00001.parquet",
+    "high_school_physics/val-00000-of-00001.parquet",
+    "high_school_politics/val-00000-of-00001.parquet",
+    "ideological_and_moral_cultivation/val-00000-of-00001.parquet",
+    "law/val-00000-of-00001.parquet",
+    "legal_professional/val-00000-of-00001.parquet",
+    "logic/val-00000-of-00001.parquet",
+    "mao_zedong_thought/val-00000-of-00001.parquet",
+    "marxism/val-00000-of-00001.parquet",
+    "metrology_engineer/val-00000-of-00001.parquet",
+    "middle_school_biology/val-00000-of-00001.parquet",
+    "middle_school_chemistry/val-00000-of-00001.parquet",
+    "middle_school_geography/val-00000-of-00001.parquet",
+    "middle_school_history/val-00000-of-00001.parquet",
+    "middle_school_mathematics/val-00000-of-00001.parquet",
+    "middle_school_physics/val-00000-of-00001.parquet",
+    "middle_school_politics/val-00000-of-00001.parquet",
+    "modern_chinese_history/val-00000-of-00001.parquet",
+    "operating_system/val-00000-of-00001.parquet",
+    "physician/val-00000-of-00001.parquet",
+    "plant_protection/val-00000-of-00001.parquet",
+    "probability_and_statistics/val-00000-of-00001.parquet",
+    "professional_tour_guide/val-00000-of-00001.parquet",
+    "sports_science/val-00000-of-00001.parquet",
+    "tax_accountant/val-00000-of-00001.parquet",
+    "teacher_qualification/val-00000-of-00001.parquet",
+    "urban_and_rural_planner/val-00000-of-00001.parquet",
+    "veterinary_medicine/val-00000-of-00001.parquet"
+  ],
+  "tasks": {
+    "gsm8k": {
+      "samples": [
+        {
+          "id": 55,
+          "gold_sha256": "8527a891e224136950ff32ca212b45bc93f69fbb801c3b1ebedac52775f99e61"
+        },
+        {
+          "id": 29,
+          "gold_sha256": "5ef6fdf32513aa7cd11f72beccf132b9224d33f271471fff402742887a171edf"
+        },
+        {
+          "id": 35,
+          "gold_sha256": "19581e27de7ced00ff1ce50b2047e7a567c76b1cbaebabe5ef03f7c3017bb5b7"
+        },
+        {
+          "id": 32,
+          "gold_sha256": "9f14025af0065b30e47e23ebb3b491d39ae8ed17d33739e5ff3827ffb3634953"
+        },
+        {
+          "id": 11,
+          "gold_sha256": "a6c2a2325dfd588f202a240a06ccb2b037854e7097a303fc8991ecc15501528c"
+        },
+        {
+          "id": 71,
+          "gold_sha256": "39fa9ec190eee7b6f4dff1100d6343e10918d044c75eac8f9e9a2596173f80c9"
+        },
+        {
+          "id": 63,
+          "gold_sha256": "a19fbf8bf0530ca46179b803a8234f56276f21c0e7dc2f84c682924b95de5801"
+        },
+        {
+          "id": 15,
+          "gold_sha256": "0f8ef3377b30fc47f96b48247f463a726a802f62f3faa03d56403751d2f66c67"
+        },
+        {
+          "id": 82,
+          "gold_sha256": "fc71f2d6d38dbfc752ecaf2262916dc8ad99a34243d47b34691f9f8a3afaeffd"
+        },
+        {
+          "id": 81,
+          "gold_sha256": "4523540f1504cd17100c4835e85b7eefd49911580f8efff0599a8f283be6b9e3"
+        },
+        {
+          "id": 39,
+          "gold_sha256": "4ec9599fc203d176a301536c2e091a19bc852759b255bd6818810a42c5fed14a"
+        },
+        {
+          "id": 92,
+          "gold_sha256": "4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a"
+        },
+        {
+          "id": 94,
+          "gold_sha256": "06b2d82840e43ed8432b3f444de18b57dbe60637c99379c708aa8e66de83dbc1"
+        },
+        {
+          "id": 110,
+          "gold_sha256": "811786ad1ae74adfdd20dd0372abaaebc6246e343aebd01da0bfc4c02bf0106c"
+        },
+        {
+          "id": 140,
+          "gold_sha256": "f5ca38f748a1d6eaf726b8a42fb575c3c71f1864a8143301782de13da2d9202b"
+        },
+        {
+          "id": 132,
+          "gold_sha256": "39fa9ec190eee7b6f4dff1100d6343e10918d044c75eac8f9e9a2596173f80c9"
+        },
+        {
+          "id": 129,
+          "gold_sha256": "39e5b4830d4d9c14db7368a95b65d5463ea3d09520373723430c03a5a453b5df"
+        },
+        {
+          "id": 144,
+          "gold_sha256": "f5ca38f748a1d6eaf726b8a42fb575c3c71f1864a8143301782de13da2d9202b"
+        },
+        {
+          "id": 154,
+          "gold_sha256": "1c6c0bb2c7ecdc3be8e134f79b9de45155258c1f554ae7542dce48f5cc8d63f0"
+        },
+        {
+          "id": 171,
+          "gold_sha256": "45297c633d331e6ac35169ebaaf75bc7fafd206ebb59ba4efd80566936e46eb0"
+        },
+        {
+          "id": 185,
+          "gold_sha256": "624b60c58c9d8bfb6ff1886c2fd605d2adeb6ea4da576068201b6c6958ce93f4"
+        },
+        {
+          "id": 156,
+          "gold_sha256": "55fdec963805de594b61b2c1692cadc2c1dfb844d6ac10c5bfed33c842087b2e"
+        },
+        {
+          "id": 84,
+          "gold_sha256": "e629fa6598d732768f7c726b4b621285f9c3b85303900aa912017db7617d8bdb"
+        },
+        {
+          "id": 253,
+          "gold_sha256": "4ec9599fc203d176a301536c2e091a19bc852759b255bd6818810a42c5fed14a"
+        },
+        {
+          "id": 234,
+          "gold_sha256": "6f4b6612125fb3a0daecd2799dfd6c9c299424fd920f9b308110a2c1fbd8f443"
+        },
+        {
+          "id": 239,
+          "gold_sha256": "7f0a22117f8fe0172cf9209ff622b64a51aaeda21d58b5b62685a93dbe2dad25"
+        },
+        {
+          "id": 227,
+          "gold_sha256": "19581e27de7ced00ff1ce50b2047e7a567c76b1cbaebabe5ef03f7c3017bb5b7"
+        },
+        {
+          "id": 201,
+          "gold_sha256": "b72d87c828741dd7d7b656cfb320823589b0a5cfb64af684ce7e32c97d97d7b7"
+        },
+        {
+          "id": 289,
+          "gold_sha256": "b17ef6d19c7a5b1ee83b907c595526dcb1eb06db8227d650d5dda0a9f4ce8cd9"
+        },
+        {
+          "id": 294,
+          "gold_sha256": "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce"
+        },
+        {
+          "id": 182,
+          "gold_sha256": "535fa30d7e25dd8a49f1536779734ec8286108d115da5045d77f3b4185d8f790"
+        },
+        {
+          "id": 295,
+          "gold_sha256": "f1607c19a0f910ca1b8dce18843bc34e46a533c87e3524ea75798949f7a352d5"
+        },
+        {
+          "id": 316,
+          "gold_sha256": "0fecf9247f3ddc84db8a804fa3065c013baf6b7c2458c2ba2bf56c2e1d42ddd4"
+        },
+        {
+          "id": 335,
+          "gold_sha256": "226f76b55acb49701e06ded1d95165d179458f6fc37f5c6fc760ae30dec1c378"
+        },
+        {
+          "id": 342,
+          "gold_sha256": "bdd2d3af3a5a1213497d4f1f7bfcda898274fe9cb5401bbc0190885664708fc2"
+        },
+        {
+          "id": 374,
+          "gold_sha256": "811786ad1ae74adfdd20dd0372abaaebc6246e343aebd01da0bfc4c02bf0106c"
+        },
+        {
+          "id": 348,
+          "gold_sha256": "4a44dc15364204a80fe80e9039455cc1608281820fe2b24f1e5233ade6af1dd5"
+        },
+        {
+          "id": 363,
+          "gold_sha256": "e7f6c011776e8db7cd330b54174fd76f7d0216b612387a5ffcfb81e6f0919683"
+        },
+        {
+          "id": 186,
+          "gold_sha256": "ef2d127de37b942baad06145e54b0c619a1f22327b2ebbcfbec78f5564afe39d"
+        },
+        {
+          "id": 440,
+          "gold_sha256": "29db0c6782dbd5000559ef4d9e953e300e2b479eed26d887ef3f92b921c06a67"
+        },
+        {
+          "id": 484,
+          "gold_sha256": "6af1f692e9496c6d0b668316eccb93276ae6b6774fa728aac31ff40a38318760"
+        },
+        {
+          "id": 511,
+          "gold_sha256": "9bdb2af6799204a299c603994b8e400e4b1fd625efdb74066cc869fee42c9df3"
+        },
+        {
+          "id": 409,
+          "gold_sha256": "e4c6b6993ff6b3f2e7c2ef6aa27f5158b1e72310f9e51267e8a64f040de60d6a"
+        },
+        {
+          "id": 545,
+          "gold_sha256": "624b60c58c9d8bfb6ff1886c2fd605d2adeb6ea4da576068201b6c6958ce93f4"
+        },
+        {
+          "id": 556,
+          "gold_sha256": "a512db2741cd20693e4b16f19891e72b9ff12cead72761fc5e92d2aaf34740c1"
+        },
+        {
+          "id": 566,
+          "gold_sha256": "4a44dc15364204a80fe80e9039455cc1608281820fe2b24f1e5233ade6af1dd5"
+        },
+        {
+          "id": 552,
+          "gold_sha256": "83151157c10d85af7c84657c71c3e3603d955160f0526fce672481da83a2e090"
+        },
+        {
+          "id": 563,
+          "gold_sha256": "6b51d431df5d7f141cbececcf79edf3dd861c3b4069f0b11661a3eefacbba918"
+        },
+        {
+          "id": 605,
+          "gold_sha256": "73475cb40a568e8da8a045ced110137e159f890ac4da883b6b17dc651b3a8049"
+        },
+        {
+          "id": 625,
+          "gold_sha256": "a512db2741cd20693e4b16f19891e72b9ff12cead72761fc5e92d2aaf34740c1"
+        },
+        {
+          "id": 614,
+          "gold_sha256": "865736a1c30a82dc67aba820360a01b1d9d0da5643234cd07c4d60b06eb530c5"
+        },
+        {
+          "id": 619,
+          "gold_sha256": "f74efabef12ea619e30b79bddef89cffa9dda494761681ca862cff2871a85980"
+        },
+        {
+          "id": 699,
+          "gold_sha256": "2c624232cdd221771294dfbb310aca000a0df6ac8b66b696d90ef06fdefb64a3"
+        },
+        {
+          "id": 708,
+          "gold_sha256": "80c3cd40fa35f9088b8741bd8be6153de05f661cfeeb4625ffbf5f4a6c3c02c4"
+        },
+        {
+          "id": 709,
+          "gold_sha256": "a176eeb31e601c3877c87c2843a2f584968975269e369d5c86788b4c2f92d2a2"
+        },
+        {
+          "id": 380,
+          "gold_sha256": "9f006addc898a6458ff29db72de90b27e29302c92b9c73e33515df56290bd855"
+        },
+        {
+          "id": 683,
+          "gold_sha256": "1a6562590ef19d1045d06c4055742d38288e9e6dcd71ccde5cee80f1d5a774eb"
+        },
+        {
+          "id": 715,
+          "gold_sha256": "fd07cae891d524656cd2892e04ffa6752c49b548b32c7b154f8fd5de49af9157"
+        },
+        {
+          "id": 727,
+          "gold_sha256": "b1556dea32e9d0cdbfed038fd7787275775ea40939c146a64e205bcb349ad02f"
+        },
+        {
+          "id": 726,
+          "gold_sha256": "4a44dc15364204a80fe80e9039455cc1608281820fe2b24f1e5233ade6af1dd5"
+        },
+        {
+          "id": 896,
+          "gold_sha256": "1e472b39b105d349bcd069c4a711b44a2fffb8e274714bb07ecfff69a9a7f67b"
+        },
+        {
+          "id": 790,
+          "gold_sha256": "9537f32ec7599e1ae953af6c9f929fe747ff9dadf79a9beff1f304c550173011"
+        },
+        {
+          "id": 852,
+          "gold_sha256": "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3"
+        },
+        {
+          "id": 772,
+          "gold_sha256": "1a6562590ef19d1045d06c4055742d38288e9e6dcd71ccde5cee80f1d5a774eb"
+        },
+        {
+          "id": 900,
+          "gold_sha256": "e629fa6598d732768f7c726b4b621285f9c3b85303900aa912017db7617d8bdb"
+        },
+        {
+          "id": 902,
+          "gold_sha256": "2c624232cdd221771294dfbb310aca000a0df6ac8b66b696d90ef06fdefb64a3"
+        },
+        {
+          "id": 949,
+          "gold_sha256": "73475cb40a568e8da8a045ced110137e159f890ac4da883b6b17dc651b3a8049"
+        },
+        {
+          "id": 930,
+          "gold_sha256": "8527a891e224136950ff32ca212b45bc93f69fbb801c3b1ebedac52775f99e61"
+        },
+        {
+          "id": 928,
+          "gold_sha256": "39fa9ec190eee7b6f4dff1100d6343e10918d044c75eac8f9e9a2596173f80c9"
+        },
+        {
+          "id": 954,
+          "gold_sha256": "86e50149658661312a9e0b35558d84f6c6d3da797f552a9657fe0558ca40cdef"
+        },
+        {
+          "id": 958,
+          "gold_sha256": "d59eced1ded07f84c145592f65bdf854358e009c5cd705f5215bf18697fed103"
+        },
+        {
+          "id": 951,
+          "gold_sha256": "983bd614bb5afece5ab3b6023f71147cd7b6bc2314f9d27af7422541c6558389"
+        },
+        {
+          "id": 968,
+          "gold_sha256": "dfe62e836a0a6f2633422230c81287700a56e2639652c73f264e6562220c207a"
+        },
+        {
+          "id": 964,
+          "gold_sha256": "27badc983df1780b60c2b3fa9d3a19a00e46aac798451f0febdca52920faaddf"
+        },
+        {
+          "id": 974,
+          "gold_sha256": "ef2d127de37b942baad06145e54b0c619a1f22327b2ebbcfbec78f5564afe39d"
+        },
+        {
+          "id": 985,
+          "gold_sha256": "da4ea2a5506f2693eae190d9360a1f31793c98a1adade51d93533a6f520ace1c"
+        },
+        {
+          "id": 1015,
+          "gold_sha256": "349c41201b62db851192665c504b350ff98c6b45fb62a8a2161f78b6534d8de9"
+        },
+        {
+          "id": 1016,
+          "gold_sha256": "d6a4031733610bb080d0bfa794fcc9dbdcff74834aeaab7c6b927e21e9754037"
+        },
+        {
+          "id": 1040,
+          "gold_sha256": "2b9449f314bf93145f8122906d8dc56c4ca1f116e6db7ad2768d6f9ade29b31e"
+        },
+        {
+          "id": 1054,
+          "gold_sha256": "8350242b2df439d296a664c7c59b117507d0b3c537fa293304c84d84eb85cc43"
+        },
+        {
+          "id": 996,
+          "gold_sha256": "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce"
+        },
+        {
+          "id": 991,
+          "gold_sha256": "e629fa6598d732768f7c726b4b621285f9c3b85303900aa912017db7617d8bdb"
+        },
+        {
+          "id": 1063,
+          "gold_sha256": "88820462180e5c893eff2ed73f4ec33e205d1cd5acc4d17fa7b2bca2495d3448"
+        },
+        {
+          "id": 1085,
+          "gold_sha256": "5f9c4ab08cac7457e9111a30e4664920607ea2c115a1433d7be98e97e64244ca"
+        },
+        {
+          "id": 1108,
+          "gold_sha256": "aea92132c4cbeb263e6ac2bf6c183b5d81737f179f21efdc5863739672f0f470"
+        },
+        {
+          "id": 1084,
+          "gold_sha256": "f5ca38f748a1d6eaf726b8a42fb575c3c71f1864a8143301782de13da2d9202b"
+        },
+        {
+          "id": 1141,
+          "gold_sha256": "f5ca38f748a1d6eaf726b8a42fb575c3c71f1864a8143301782de13da2d9202b"
+        },
+        {
+          "id": 1139,
+          "gold_sha256": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b"
+        },
+        {
+          "id": 510,
+          "gold_sha256": "c32ffef1ae0cabc0576614cb4d2064cea5bd9c0fa13c7b8bb9fb9b4e8ba950a9"
+        },
+        {
+          "id": 1153,
+          "gold_sha256": "f5ca38f748a1d6eaf726b8a42fb575c3c71f1864a8143301782de13da2d9202b"
+        },
+        {
+          "id": 1030,
+          "gold_sha256": "c2356069e9d1e79ca924378153cfbbfb4d4416b1f99d41a2940bfdb66c5319db"
+        },
+        {
+          "id": 1185,
+          "gold_sha256": "e7f6c011776e8db7cd330b54174fd76f7d0216b612387a5ffcfb81e6f0919683"
+        },
+        {
+          "id": 1192,
+          "gold_sha256": "7f0a22117f8fe0172cf9209ff622b64a51aaeda21d58b5b62685a93dbe2dad25"
+        },
+        {
+          "id": 1193,
+          "gold_sha256": "19581e27de7ced00ff1ce50b2047e7a567c76b1cbaebabe5ef03f7c3017bb5b7"
+        },
+        {
+          "id": 1203,
+          "gold_sha256": "6af1f692e9496c6d0b668316eccb93276ae6b6774fa728aac31ff40a38318760"
+        },
+        {
+          "id": 1261,
+          "gold_sha256": "0a2d643bfd24a028cd236e76575d828424ccffbfa47392bd09d8ca9dc85e2f8d"
+        },
+        {
+          "id": 1218,
+          "gold_sha256": "0e6523810856a138a75dec70a9cf3778a5c70b83ac915f22c33f05db97cb3e68"
+        },
+        {
+          "id": 1231,
+          "gold_sha256": "ff5a1ae012afa5d4c889c50ad427aaf545d31a4fac04ffc1c4d03d403ba4250a"
+        },
+        {
+          "id": 1276,
+          "gold_sha256": "ff5a1ae012afa5d4c889c50ad427aaf545d31a4fac04ffc1c4d03d403ba4250a"
+        },
+        {
+          "id": 304,
+          "gold_sha256": "620e9c1f98e4730c1968dd7e14627cdff6689e377fa8ff7d5be4fd3540b57543"
+        }
+      ],
+      "on_ids": [
+        32,
+        55,
+        29,
+        11,
+        35,
+        63,
+        81,
+        71,
+        39,
+        82,
+        15,
+        92,
+        94,
+        140,
+        84,
+        132,
+        144,
+        185,
+        110,
+        156,
+        154,
+        129,
+        171,
+        253,
+        239,
+        227,
+        289,
+        294,
+        201,
+        295,
+        335,
+        342,
+        348,
+        316,
+        363,
+        374,
+        186,
+        182,
+        440,
+        484,
+        511,
+        545,
+        409,
+        556,
+        563,
+        552,
+        566,
+        605,
+        614,
+        625,
+        234,
+        619,
+        699,
+        683,
+        708,
+        715,
+        726,
+        772,
+        727,
+        790,
+        896,
+        709,
+        902,
+        928,
+        930,
+        949,
+        852,
+        900,
+        958,
+        964,
+        954,
+        985,
+        974,
+        380,
+        968,
+        1015,
+        996,
+        1016,
+        1040,
+        1063,
+        1054,
+        1108,
+        1085,
+        510,
+        1084,
+        1030,
+        1141,
+        1139,
+        1153,
+        1192,
+        1193,
+        1185,
+        1231,
+        1261,
+        1276,
+        991,
+        1218,
+        1203,
+        304,
+        951
+      ],
+      "off": {
+        "task": "gsm8k",
+        "think": false,
+        "n": 100,
+        "correct": 99,
+        "acc": 0.99,
+        "errors": 0,
+        "truncated": 0,
+        "mean_completion_tokens": 185.84,
+        "wall_s": 107
+      },
+      "on": {
+        "task": "gsm8k",
+        "think": true,
+        "n": 100,
+        "correct": 98,
+        "acc": 0.98,
+        "errors": 0,
+        "truncated": 1,
+        "mean_completion_tokens": 502.59,
+        "wall_s": 373
+      }
+    },
+    "math500": {
+      "samples": [
+        {
+          "id": "test/algebra/2036.json",
+          "gold_sha256": "8081f877c1797b6f58a9f2c55a25dbf6720bf2e54adcd3324ea946c2866383d8"
+        },
+        {
+          "id": "test/number_theory/572.json",
+          "gold_sha256": "19581e27de7ced00ff1ce50b2047e7a567c76b1cbaebabe5ef03f7c3017bb5b7"
+        },
+        {
+          "id": "test/number_theory/627.json",
+          "gold_sha256": "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce"
+        },
+        {
+          "id": "test/precalculus/927.json",
+          "gold_sha256": "a8985d93b216df9786d5eef0b68dee24a90457efb561a89da90a4f3f7ebef3be"
+        },
+        {
+          "id": "test/algebra/2214.json",
+          "gold_sha256": "4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a"
+        },
+        {
+          "id": "test/algebra/2193.json",
+          "gold_sha256": "664e4ff929464cf795dd0a73a4fb7b690e0abe3a0b7767212056f20d706b4ab0"
+        },
+        {
+          "id": "test/geometry/178.json",
+          "gold_sha256": "d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35"
+        },
+        {
+          "id": "test/algebra/1072.json",
+          "gold_sha256": "b5a645dc018f960b8454491bea6fa8f7f6c5f7978b874d4465e515349a8506ab"
+        },
+        {
+          "id": "test/algebra/722.json",
+          "gold_sha256": "463df1129095b96938f586429e726861b43cd3d64e8515d6140cb823484d2d08"
+        },
+        {
+          "id": "test/precalculus/990.json",
+          "gold_sha256": "c1bfe2f2855e73c1f6516ac43c2906d033f56921f80e564221e9790a07c579e6"
+        },
+        {
+          "id": "test/prealgebra/1247.json",
+          "gold_sha256": "ef2d127de37b942baad06145e54b0c619a1f22327b2ebbcfbec78f5564afe39d"
+        },
+        {
+          "id": "test/intermediate_algebra/623.json",
+          "gold_sha256": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9"
+        },
+        {
+          "id": "test/prealgebra/505.json",
+          "gold_sha256": "e7f6c011776e8db7cd330b54174fd76f7d0216b612387a5ffcfb81e6f0919683"
+        },
+        {
+          "id": "test/number_theory/847.json",
+          "gold_sha256": "30bf1a573718dbf0d339d6e4549f9faebdcb34c52ee48e3b2d9f78df23d3f840"
+        },
+        {
+          "id": "test/algebra/873.json",
+          "gold_sha256": "c6f3ac57944a531490cd39902d0f777715fd005efac9a30622d5f5205e7f6894"
+        },
+        {
+          "id": "test/algebra/1275.json",
+          "gold_sha256": "65f1a1a1f01b6b7bc3ee5bcdd379db95e4c681ab03b410727ff4efd36697ac1a"
+        },
+        {
+          "id": "test/precalculus/285.json",
+          "gold_sha256": "e7f6c011776e8db7cd330b54174fd76f7d0216b612387a5ffcfb81e6f0919683"
+        },
+        {
+          "id": "test/number_theory/1055.json",
+          "gold_sha256": "4621c1d55fa4e86ce0dae4288302641baac86dd53f76227c892df9d300682d41"
+        },
+        {
+          "id": "test/intermediate_algebra/337.json",
+          "gold_sha256": "785f3ec7eb32f30b90cd0fcf3657d388b5ff4297f2f9716ff66e9b69c05ddd09"
+        },
+        {
+          "id": "test/algebra/975.json",
+          "gold_sha256": "e5e0093f285a4fb94c3fcc2ad7fd04edd10d429ccda87a9aa5e4718efadf182e"
+        },
+        {
+          "id": "test/algebra/2159.json",
+          "gold_sha256": "4fc82b26aecb47d2868c4efbe3581732a3e7cbcc6c2efb32062c08170a05eeb8"
+        },
+        {
+          "id": "test/geometry/473.json",
+          "gold_sha256": "0b38d88be79d8f4e2ad4b1077795e7aa988d58e2e7c42b4146afebdbcb6b76db"
+        },
+        {
+          "id": "test/intermediate_algebra/1123.json",
+          "gold_sha256": "a7fd0af85a0297d4442ce89b7f3d3c1d1e82d4c066d615fd65cfbfc4afa3e143"
+        },
+        {
+          "id": "test/geometry/483.json",
+          "gold_sha256": "e629fa6598d732768f7c726b4b621285f9c3b85303900aa912017db7617d8bdb"
+        },
+        {
+          "id": "test/geometry/65.json",
+          "gold_sha256": "e5238611aea8727fece9d6002c1f3dc386335348a5521b6e65d36e794118d3ac"
+        },
+        {
+          "id": "test/prealgebra/1834.json",
+          "gold_sha256": "5a8692c663b4e2579d4021b4d9c79a76e1d72884a38c8fc74a74756b77b8995a"
+        },
+        {
+          "id": "test/algebra/425.json",
+          "gold_sha256": "55e680185552dd7355632919f7ecd952df637414d8c8e2589150fe3d4a54174a"
+        },
+        {
+          "id": "test/number_theory/1065.json",
+          "gold_sha256": "4523540f1504cd17100c4835e85b7eefd49911580f8efff0599a8f283be6b9e3"
+        },
+        {
+          "id": "test/precalculus/695.json",
+          "gold_sha256": "ad83b452260a6615d23f24816e87b328c3aee000e88cf84fd9334f1ad9c5e3b4"
+        },
+        {
+          "id": "test/precalculus/881.json",
+          "gold_sha256": "0eeec90b8a56bdaa4d2ed932a2c8359b6cfc227f219ca50e878a1919b99fa11b"
+        },
+        {
+          "id": "test/precalculus/1199.json",
+          "gold_sha256": "f1cf04093d08b6dc0d58a87396405cb9093a22e9ed62a95bb95ed46e5da97097"
+        },
+        {
+          "id": "test/algebra/858.json",
+          "gold_sha256": "cf3bae39dd692048a8bf961182e6a34dfd323eeb0748e162eaf055107f1cb873"
+        },
+        {
+          "id": "test/algebra/509.json",
+          "gold_sha256": "d1e61577ccbf8dc9b0bb8d2ce9aae1de9b5740d7649c0a008be6f342d24fcdf2"
+        },
+        {
+          "id": "test/counting_and_probability/737.json",
+          "gold_sha256": "bfb737fc2e3d6fd98dfd02b2a643f3fa186a9300d25bd82ba74fd02f5a64973c"
+        },
+        {
+          "id": "test/algebra/1529.json",
+          "gold_sha256": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b"
+        },
+        {
+          "id": "test/algebra/791.json",
+          "gold_sha256": "3d914f9348c9cc0ff8a79716700b9fcd4d2f3e711608004eb8f138bcba7f14d9"
+        },
+        {
+          "id": "test/algebra/2680.json",
+          "gold_sha256": "4e3dcc0666df18197ae5ab9040127b7560f84b13fcd2902bd036db170c0d534e"
+        },
+        {
+          "id": "test/prealgebra/1991.json",
+          "gold_sha256": "f809d69d8fbbc6942d4c37b16b8ce14937b9eeab8d0fe31213f7dc9579a07a1d"
+        },
+        {
+          "id": "test/algebra/529.json",
+          "gold_sha256": "5316ca1c5ddca8e6ceccfce58f3b8540e540ee22f6180fb89492904051b3d531"
+        },
+        {
+          "id": "test/intermediate_algebra/754.json",
+          "gold_sha256": "0185792d4d426e64b457c49bf47c132952a30d59b6cc408f0b2d64057060c05b"
+        },
+        {
+          "id": "test/prealgebra/1114.json",
+          "gold_sha256": "e02626156a50d2ff745be516030f789d3c503f3d4083328310e57cfed79be8d0"
+        },
+        {
+          "id": "test/number_theory/928.json",
+          "gold_sha256": "4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce"
+        },
+        {
+          "id": "test/number_theory/820.json",
+          "gold_sha256": "2c624232cdd221771294dfbb310aca000a0df6ac8b66b696d90ef06fdefb64a3"
+        },
+        {
+          "id": "test/number_theory/13.json",
+          "gold_sha256": "a68b412c4282555f15546cf6e1fc42893b7e07f271557ceb021821098dd66c1b"
+        },
+        {
+          "id": "test/precalculus/902.json",
+          "gold_sha256": "53814f08317a6d2dbf839b8b33bd72d794ea93f7e8a36369edbe1606ed8e1556"
+        },
+        {
+          "id": "test/number_theory/1090.json",
+          "gold_sha256": "c17edaae86e4016a583e098582f6dbf3eccade8ef83747df9ba617ded9d31309"
+        },
+        {
+          "id": "test/precalculus/703.json",
+          "gold_sha256": "7ba15f9506b1e2c2f34225364ce8a946e61401c9b813428066ebfe2cf3991005"
+        },
+        {
+          "id": "test/intermediate_algebra/1462.json",
+          "gold_sha256": "0bba869d7f392cbcaca6b8935ddc7fc3a8c50846d884959333fb7da475957511"
+        },
+        {
+          "id": "test/precalculus/1252.json",
+          "gold_sha256": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b"
+        },
+        {
+          "id": "test/intermediate_algebra/1930.json",
+          "gold_sha256": "5f028113fb418f45cac471b6b6e510823b23a714b4cac2bb2755ddaf32d59a89"
+        }
+      ],
+      "on_ids": [
+        "test/algebra/2036.json",
+        "test/number_theory/572.json",
+        "test/number_theory/627.json",
+        "test/algebra/2214.json",
+        "test/geometry/178.json",
+        "test/algebra/1072.json",
+        "test/algebra/2193.json",
+        "test/precalculus/990.json",
+        "test/prealgebra/1247.json",
+        "test/precalculus/927.json",
+        "test/algebra/873.json",
+        "test/algebra/722.json",
+        "test/prealgebra/505.json",
+        "test/number_theory/847.json",
+        "test/intermediate_algebra/623.json",
+        "test/algebra/1275.json",
+        "test/precalculus/285.json",
+        "test/intermediate_algebra/337.json",
+        "test/algebra/2159.json",
+        "test/algebra/975.json",
+        "test/geometry/473.json",
+        "test/prealgebra/1834.json",
+        "test/geometry/483.json",
+        "test/number_theory/1065.json",
+        "test/number_theory/1055.json",
+        "test/precalculus/1199.json",
+        "test/intermediate_algebra/1123.json",
+        "test/algebra/425.json",
+        "test/precalculus/881.json",
+        "test/precalculus/695.json",
+        "test/algebra/1529.json",
+        "test/counting_and_probability/737.json",
+        "test/algebra/858.json",
+        "test/algebra/509.json",
+        "test/algebra/529.json",
+        "test/intermediate_algebra/754.json",
+        "test/algebra/791.json",
+        "test/algebra/2680.json",
+        "test/geometry/65.json",
+        "test/number_theory/13.json",
+        "test/prealgebra/1114.json",
+        "test/prealgebra/1991.json",
+        "test/number_theory/928.json",
+        "test/precalculus/1252.json",
+        "test/number_theory/820.json",
+        "test/precalculus/703.json",
+        "test/number_theory/1090.json",
+        "test/intermediate_algebra/1930.json",
+        "test/intermediate_algebra/1462.json",
+        "test/precalculus/902.json"
+      ],
+      "off": {
+        "task": "math500",
+        "think": false,
+        "n": 50,
+        "correct": 44,
+        "acc": 0.88,
+        "errors": 0,
+        "truncated": 3,
+        "mean_completion_tokens": 651.66,
+        "wall_s": 141,
+        "regraded": true
+      },
+      "on": {
+        "task": "math500",
+        "think": true,
+        "n": 50,
+        "correct": 48,
+        "acc": 0.96,
+        "errors": 0,
+        "truncated": 0,
+        "mean_completion_tokens": 758.16,
+        "wall_s": 189,
+        "regraded": true
+      }
+    },
+    "humaneval": {
+      "samples": [
+        {
+          "id": "HumanEval/2"
+        },
+        {
+          "id": "HumanEval/7"
+        },
+        {
+          "id": "HumanEval/9"
+        },
+        {
+          "id": "HumanEval/3"
+        },
+        {
+          "id": "HumanEval/4"
+        },
+        {
+          "id": "HumanEval/8"
+        },
+        {
+          "id": "HumanEval/0"
+        },
+        {
+          "id": "HumanEval/16"
+        },
+        {
+          "id": "HumanEval/1"
+        },
+        {
+          "id": "HumanEval/11"
+        },
+        {
+          "id": "HumanEval/23"
+        },
+        {
+          "id": "HumanEval/22"
+        },
+        {
+          "id": "HumanEval/29"
+        },
+        {
+          "id": "HumanEval/21"
+        },
+        {
+          "id": "HumanEval/42"
+        },
+        {
+          "id": "HumanEval/25"
+        },
+        {
+          "id": "HumanEval/31"
+        },
+        {
+          "id": "HumanEval/60"
+        },
+        {
+          "id": "HumanEval/58"
+        },
+        {
+          "id": "HumanEval/17"
+        },
+        {
+          "id": "HumanEval/65"
+        },
+        {
+          "id": "HumanEval/38"
+        },
+        {
+          "id": "HumanEval/46"
+        },
+        {
+          "id": "HumanEval/63"
+        },
+        {
+          "id": "HumanEval/77"
+        },
+        {
+          "id": "HumanEval/85"
+        },
+        {
+          "id": "HumanEval/69"
+        },
+        {
+          "id": "HumanEval/67"
+        },
+        {
+          "id": "HumanEval/83"
+        },
+        {
+          "id": "HumanEval/90"
+        },
+        {
+          "id": "HumanEval/88"
+        },
+        {
+          "id": "HumanEval/68"
+        },
+        {
+          "id": "HumanEval/112"
+        },
+        {
+          "id": "HumanEval/118"
+        },
+        {
+          "id": "HumanEval/137"
+        },
+        {
+          "id": "HumanEval/119"
+        },
+        {
+          "id": "HumanEval/131"
+        },
+        {
+          "id": "HumanEval/138"
+        },
+        {
+          "id": "HumanEval/128"
+        },
+        {
+          "id": "HumanEval/139"
+        },
+        {
+          "id": "HumanEval/123"
+        },
+        {
+          "id": "HumanEval/155"
+        },
+        {
+          "id": "HumanEval/162"
+        },
+        {
+          "id": "HumanEval/149"
+        },
+        {
+          "id": "HumanEval/124"
+        },
+        {
+          "id": "HumanEval/156"
+        },
+        {
+          "id": "HumanEval/163"
+        },
+        {
+          "id": "HumanEval/159"
+        },
+        {
+          "id": "HumanEval/160"
+        },
+        {
+          "id": "HumanEval/153"
+        }
+      ],
+      "on_ids": [
+        "HumanEval/3",
+        "HumanEval/7",
+        "HumanEval/8",
+        "HumanEval/4",
+        "HumanEval/9",
+        "HumanEval/0",
+        "HumanEval/16",
+        "HumanEval/23",
+        "HumanEval/2",
+        "HumanEval/29",
+        "HumanEval/1",
+        "HumanEval/42",
+        "HumanEval/22",
+        "HumanEval/31",
+        "HumanEval/58",
+        "HumanEval/60",
+        "HumanEval/25",
+        "HumanEval/11",
+        "HumanEval/46",
+        "HumanEval/67",
+        "HumanEval/69",
+        "HumanEval/68",
+        "HumanEval/85",
+        "HumanEval/77",
+        "HumanEval/90",
+        "HumanEval/83",
+        "HumanEval/88",
+        "HumanEval/112",
+        "HumanEval/119",
+        "HumanEval/123",
+        "HumanEval/128",
+        "HumanEval/63",
+        "HumanEval/131",
+        "HumanEval/138",
+        "HumanEval/124",
+        "HumanEval/118",
+        "HumanEval/139",
+        "HumanEval/155",
+        "HumanEval/153",
+        "HumanEval/159",
+        "HumanEval/156",
+        "HumanEval/149",
+        "HumanEval/162",
+        "HumanEval/163",
+        "HumanEval/160",
+        "HumanEval/17",
+        "HumanEval/21",
+        "HumanEval/65",
+        "HumanEval/38",
+        "HumanEval/137"
+      ],
+      "off": {
+        "task": "humaneval",
+        "think": false,
+        "n": 50,
+        "correct": 49,
+        "acc": 0.98,
+        "errors": 0,
+        "truncated": 0,
+        "mean_completion_tokens": 184.56,
+        "wall_s": 50
+      },
+      "on": {
+        "task": "humaneval",
+        "think": true,
+        "n": 50,
+        "correct": 45,
+        "acc": 0.9,
+        "errors": 0,
+        "truncated": 5,
+        "mean_completion_tokens": 2311.4,
+        "wall_s": 625
+      }
+    },
+    "mmlupro": {
+      "samples": [
+        {
+          "id": 97,
+          "gold_sha256": "f67ab10ad4e4c53121b6a5fe4da9c10ddee905b978d3788d2723d7bfacbe28a9"
+        },
+        {
+          "id": 331,
+          "gold_sha256": "333e0a1e27815d0ceee55c473fe3dc93d56c63e3bee2b3b4aee8eed6d70191a3"
+        },
+        {
+          "id": 648,
+          "gold_sha256": "a83dd0ccbffe39d071cc317ddf6e97f5c6b1c87af91919271f9fa140b0508c6c"
+        },
+        {
+          "id": 311,
+          "gold_sha256": "6b23c0d5f35d1b11f9b683f0b0a617355deb11277d91ae091d399c655b87940d"
+        },
+        {
+          "id": 193,
+          "gold_sha256": "f67ab10ad4e4c53121b6a5fe4da9c10ddee905b978d3788d2723d7bfacbe28a9"
+        },
+        {
+          "id": 165,
+          "gold_sha256": "3f39d5c348e5b79d06e842c114e6cc571583bbf44e4b0ebfda1a01ec05745d43"
+        },
+        {
+          "id": 389,
+          "gold_sha256": "333e0a1e27815d0ceee55c473fe3dc93d56c63e3bee2b3b4aee8eed6d70191a3"
+        },
+        {
+          "id": 725,
+          "gold_sha256": "44bd7ae60f478fae1061e11a7739f4b94d1daf917982d33b6fc8a01a63f89c21"
+        },
+        {
+          "id": 819,
+          "gold_sha256": "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd"
+        },
+        {
+          "id": 518,
+          "gold_sha256": "6b23c0d5f35d1b11f9b683f0b0a617355deb11277d91ae091d399c655b87940d"
+        },
+        {
+          "id": 749,
+          "gold_sha256": "3f39d5c348e5b79d06e842c114e6cc571583bbf44e4b0ebfda1a01ec05745d43"
+        },
+        {
+          "id": 859,
+          "gold_sha256": "a83dd0ccbffe39d071cc317ddf6e97f5c6b1c87af91919271f9fa140b0508c6c"
+        },
+        {
+          "id": 699,
+          "gold_sha256": "a9f51566bd6705f7ea6ad54bb9deb449f795582d6529a0e22207b8981233ec58"
+        },
+        {
+          "id": 830,
+          "gold_sha256": "44bd7ae60f478fae1061e11a7739f4b94d1daf917982d33b6fc8a01a63f89c21"
+        },
+        {
+          "id": 579,
+          "gold_sha256": "6b23c0d5f35d1b11f9b683f0b0a617355deb11277d91ae091d399c655b87940d"
+        },
+        {
+          "id": 864,
+          "gold_sha256": "6b23c0d5f35d1b11f9b683f0b0a617355deb11277d91ae091d399c655b87940d"
+        },
+        {
+          "id": 1114,
+          "gold_sha256": "df7e70e5021544f4834bbee64a9e3789febc4be81470df629cad6ddb03320a5c"
+        },
+        {
+          "id": 357,
+          "gold_sha256": "44bd7ae60f478fae1061e11a7739f4b94d1daf917982d33b6fc8a01a63f89c21"
+        },
+        {
+          "id": 1138,
+          "gold_sha256": "6b23c0d5f35d1b11f9b683f0b0a617355deb11277d91ae091d399c655b87940d"
+        },
+        {
+          "id": 735,
+          "gold_sha256": "df7e70e5021544f4834bbee64a9e3789febc4be81470df629cad6ddb03320a5c"
+        },
+        {
+          "id": 1206,
+          "gold_sha256": "3f39d5c348e5b79d06e842c114e6cc571583bbf44e4b0ebfda1a01ec05745d43"
+        },
+        {
+          "id": 1225,
+          "gold_sha256": "df7e70e5021544f4834bbee64a9e3789febc4be81470df629cad6ddb03320a5c"
+        },
+        {
+          "id": 1167,
+          "gold_sha256": "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd"
+        },
+        {
+          "id": 964,
+          "gold_sha256": "44bd7ae60f478fae1061e11a7739f4b94d1daf917982d33b6fc8a01a63f89c21"
+        },
+        {
+          "id": 1243,
+          "gold_sha256": "df7e70e5021544f4834bbee64a9e3789febc4be81470df629cad6ddb03320a5c"
+        },
+        {
+          "id": 1240,
+          "gold_sha256": "a83dd0ccbffe39d071cc317ddf6e97f5c6b1c87af91919271f9fa140b0508c6c"
+        },
+        {
+          "id": 1076,
+          "gold_sha256": "3f39d5c348e5b79d06e842c114e6cc571583bbf44e4b0ebfda1a01ec05745d43"
+        },
+        {
+          "id": 1280,
+          "gold_sha256": "3f39d5c348e5b79d06e842c114e6cc571583bbf44e4b0ebfda1a01ec05745d43"
+        },
+        {
+          "id": 1465,
+          "gold_sha256": "f67ab10ad4e4c53121b6a5fe4da9c10ddee905b978d3788d2723d7bfacbe28a9"
+        },
+        {
+          "id": 1371,
+          "gold_sha256": "f67ab10ad4e4c53121b6a5fe4da9c10ddee905b978d3788d2723d7bfacbe28a9"
+        },
+        {
+          "id": 1333,
+          "gold_sha256": "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd"
+        },
+        {
+          "id": 1587,
+          "gold_sha256": "44bd7ae60f478fae1061e11a7739f4b94d1daf917982d33b6fc8a01a63f89c21"
+        },
+        {
+          "id": 1318,
+          "gold_sha256": "a9f51566bd6705f7ea6ad54bb9deb449f795582d6529a0e22207b8981233ec58"
+        },
+        {
+          "id": 1706,
+          "gold_sha256": "6b23c0d5f35d1b11f9b683f0b0a617355deb11277d91ae091d399c655b87940d"
+        },
+        {
+          "id": 1068,
+          "gold_sha256": "df7e70e5021544f4834bbee64a9e3789febc4be81470df629cad6ddb03320a5c"
+        },
+        {
+          "id": 1548,
+          "gold_sha256": "a9f51566bd6705f7ea6ad54bb9deb449f795582d6529a0e22207b8981233ec58"
+        },
+        {
+          "id": 1527,
+          "gold_sha256": "6b23c0d5f35d1b11f9b683f0b0a617355deb11277d91ae091d399c655b87940d"
+        },
+        {
+          "id": 1784,
+          "gold_sha256": "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd"
+        },
+        {
+          "id": 1576,
+          "gold_sha256": "6da43b944e494e885e69af021f93c6d9331c78aa228084711429160a5bbd15b5"
+        },
+        {
+          "id": 2010,
+          "gold_sha256": "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd"
+        },
+        {
+          "id": 2056,
+          "gold_sha256": "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd"
+        },
+        {
+          "id": 1912,
+          "gold_sha256": "44bd7ae60f478fae1061e11a7739f4b94d1daf917982d33b6fc8a01a63f89c21"
+        },
+        {
+          "id": 2373,
+          "gold_sha256": "6da43b944e494e885e69af021f93c6d9331c78aa228084711429160a5bbd15b5"
+        },
+        {
+          "id": 2129,
+          "gold_sha256": "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd"
+        },
+        {
+          "id": 2466,
+          "gold_sha256": "a9f51566bd6705f7ea6ad54bb9deb449f795582d6529a0e22207b8981233ec58"
+        },
+        {
+          "id": 2415,
+          "gold_sha256": "a9f51566bd6705f7ea6ad54bb9deb449f795582d6529a0e22207b8981233ec58"
+        },
+        {
+          "id": 2477,
+          "gold_sha256": "a83dd0ccbffe39d071cc317ddf6e97f5c6b1c87af91919271f9fa140b0508c6c"
+        },
+        {
+          "id": 2245,
+          "gold_sha256": "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd"
+        },
+        {
+          "id": 2536,
+          "gold_sha256": "6da43b944e494e885e69af021f93c6d9331c78aa228084711429160a5bbd15b5"
+        },
+        {
+          "id": 2458,
+          "gold_sha256": "f67ab10ad4e4c53121b6a5fe4da9c10ddee905b978d3788d2723d7bfacbe28a9"
+        },
+        {
+          "id": 1970,
+          "gold_sha256": "f67ab10ad4e4c53121b6a5fe4da9c10ddee905b978d3788d2723d7bfacbe28a9"
+        },
+        {
+          "id": 2532,
+          "gold_sha256": "df7e70e5021544f4834bbee64a9e3789febc4be81470df629cad6ddb03320a5c"
+        },
+        {
+          "id": 1754,
+          "gold_sha256": "a9f51566bd6705f7ea6ad54bb9deb449f795582d6529a0e22207b8981233ec58"
+        },
+        {
+          "id": 2645,
+          "gold_sha256": "6da43b944e494e885e69af021f93c6d9331c78aa228084711429160a5bbd15b5"
+        },
+        {
+          "id": 2683,
+          "gold_sha256": "f67ab10ad4e4c53121b6a5fe4da9c10ddee905b978d3788d2723d7bfacbe28a9"
+        },
+        {
+          "id": 2639,
+          "gold_sha256": "44bd7ae60f478fae1061e11a7739f4b94d1daf917982d33b6fc8a01a63f89c21"
+        },
+        {
+          "id": 2803,
+          "gold_sha256": "6b23c0d5f35d1b11f9b683f0b0a617355deb11277d91ae091d399c655b87940d"
+        },
+        {
+          "id": 2611,
+          "gold_sha256": "333e0a1e27815d0ceee55c473fe3dc93d56c63e3bee2b3b4aee8eed6d70191a3"
+        },
+        {
+          "id": 2920,
+          "gold_sha256": "f67ab10ad4e4c53121b6a5fe4da9c10ddee905b978d3788d2723d7bfacbe28a9"
+        },
+        {
+          "id": 2902,
+          "gold_sha256": "44bd7ae60f478fae1061e11a7739f4b94d1daf917982d33b6fc8a01a63f89c21"
+        },
+        {
+          "id": 2980,
+          "gold_sha256": "f67ab10ad4e4c53121b6a5fe4da9c10ddee905b978d3788d2723d7bfacbe28a9"
+        },
+        {
+          "id": 3023,
+          "gold_sha256": "f67ab10ad4e4c53121b6a5fe4da9c10ddee905b978d3788d2723d7bfacbe28a9"
+        },
+        {
+          "id": 1526,
+          "gold_sha256": "a83dd0ccbffe39d071cc317ddf6e97f5c6b1c87af91919271f9fa140b0508c6c"
+        },
+        {
+          "id": 2855,
+          "gold_sha256": "333e0a1e27815d0ceee55c473fe3dc93d56c63e3bee2b3b4aee8eed6d70191a3"
+        },
+        {
+          "id": 3309,
+          "gold_sha256": "3f39d5c348e5b79d06e842c114e6cc571583bbf44e4b0ebfda1a01ec05745d43"
+        },
+        {
+          "id": 3398,
+          "gold_sha256": "44bd7ae60f478fae1061e11a7739f4b94d1daf917982d33b6fc8a01a63f89c21"
+        },
+        {
+          "id": 1867,
+          "gold_sha256": "6b23c0d5f35d1b11f9b683f0b0a617355deb11277d91ae091d399c655b87940d"
+        },
+        {
+          "id": 3161,
+          "gold_sha256": "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd"
+        },
+        {
+          "id": 3119,
+          "gold_sha256": "6b23c0d5f35d1b11f9b683f0b0a617355deb11277d91ae091d399c655b87940d"
+        },
+        {
+          "id": 3428,
+          "gold_sha256": "6da43b944e494e885e69af021f93c6d9331c78aa228084711429160a5bbd15b5"
+        },
+        {
+          "id": 3451,
+          "gold_sha256": "3f39d5c348e5b79d06e842c114e6cc571583bbf44e4b0ebfda1a01ec05745d43"
+        },
+        {
+          "id": 3645,
+          "gold_sha256": "df7e70e5021544f4834bbee64a9e3789febc4be81470df629cad6ddb03320a5c"
+        },
+        {
+          "id": 3629,
+          "gold_sha256": "3f39d5c348e5b79d06e842c114e6cc571583bbf44e4b0ebfda1a01ec05745d43"
+        },
+        {
+          "id": 3257,
+          "gold_sha256": "6da43b944e494e885e69af021f93c6d9331c78aa228084711429160a5bbd15b5"
+        },
+        {
+          "id": 2820,
+          "gold_sha256": "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd"
+        },
+        {
+          "id": 4003,
+          "gold_sha256": "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd"
+        },
+        {
+          "id": 4219,
+          "gold_sha256": "3f39d5c348e5b79d06e842c114e6cc571583bbf44e4b0ebfda1a01ec05745d43"
+        },
+        {
+          "id": 3481,
+          "gold_sha256": "6b23c0d5f35d1b11f9b683f0b0a617355deb11277d91ae091d399c655b87940d"
+        },
+        {
+          "id": 3676,
+          "gold_sha256": "6da43b944e494e885e69af021f93c6d9331c78aa228084711429160a5bbd15b5"
+        },
+        {
+          "id": 4344,
+          "gold_sha256": "333e0a1e27815d0ceee55c473fe3dc93d56c63e3bee2b3b4aee8eed6d70191a3"
+        },
+        {
+          "id": 4312,
+          "gold_sha256": "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd"
+        },
+        {
+          "id": 4544,
+          "gold_sha256": "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd"
+        },
+        {
+          "id": 3717,
+          "gold_sha256": "a9f51566bd6705f7ea6ad54bb9deb449f795582d6529a0e22207b8981233ec58"
+        },
+        {
+          "id": 3995,
+          "gold_sha256": "3f39d5c348e5b79d06e842c114e6cc571583bbf44e4b0ebfda1a01ec05745d43"
+        },
+        {
+          "id": 4666,
+          "gold_sha256": "3f39d5c348e5b79d06e842c114e6cc571583bbf44e4b0ebfda1a01ec05745d43"
+        },
+        {
+          "id": 4827,
+          "gold_sha256": "a83dd0ccbffe39d071cc317ddf6e97f5c6b1c87af91919271f9fa140b0508c6c"
+        },
+        {
+          "id": 4583,
+          "gold_sha256": "3f39d5c348e5b79d06e842c114e6cc571583bbf44e4b0ebfda1a01ec05745d43"
+        },
+        {
+          "id": 4638,
+          "gold_sha256": "a83dd0ccbffe39d071cc317ddf6e97f5c6b1c87af91919271f9fa140b0508c6c"
+        },
+        {
+          "id": 5086,
+          "gold_sha256": "6b23c0d5f35d1b11f9b683f0b0a617355deb11277d91ae091d399c655b87940d"
+        },
+        {
+          "id": 4983,
+          "gold_sha256": "3f39d5c348e5b79d06e842c114e6cc571583bbf44e4b0ebfda1a01ec05745d43"
+        },
+        {
+          "id": 5060,
+          "gold_sha256": "6b23c0d5f35d1b11f9b683f0b0a617355deb11277d91ae091d399c655b87940d"
+        },
+        {
+          "id": 5335,
+          "gold_sha256": "df7e70e5021544f4834bbee64a9e3789febc4be81470df629cad6ddb03320a5c"
+        },
+        {
+          "id": 4548,
+          "gold_sha256": "6b23c0d5f35d1b11f9b683f0b0a617355deb11277d91ae091d399c655b87940d"
+        },
+        {
+          "id": 5444,
+          "gold_sha256": "a9f51566bd6705f7ea6ad54bb9deb449f795582d6529a0e22207b8981233ec58"
+        },
+        {
+          "id": 5149,
+          "gold_sha256": "df7e70e5021544f4834bbee64a9e3789febc4be81470df629cad6ddb03320a5c"
+        },
+        {
+          "id": 5618,
+          "gold_sha256": "6da43b944e494e885e69af021f93c6d9331c78aa228084711429160a5bbd15b5"
+        },
+        {
+          "id": 5096,
+          "gold_sha256": "df7e70e5021544f4834bbee64a9e3789febc4be81470df629cad6ddb03320a5c"
+        },
+        {
+          "id": 5815,
+          "gold_sha256": "3f39d5c348e5b79d06e842c114e6cc571583bbf44e4b0ebfda1a01ec05745d43"
+        },
+        {
+          "id": 5827,
+          "gold_sha256": "44bd7ae60f478fae1061e11a7739f4b94d1daf917982d33b6fc8a01a63f89c21"
+        },
+        {
+          "id": 5753,
+          "gold_sha256": "f67ab10ad4e4c53121b6a5fe4da9c10ddee905b978d3788d2723d7bfacbe28a9"
+        },
+        {
+          "id": 5613,
+          "gold_sha256": "f67ab10ad4e4c53121b6a5fe4da9c10ddee905b978d3788d2723d7bfacbe28a9"
+        },
+        {
+          "id": 5829,
+          "gold_sha256": "df7e70e5021544f4834bbee64a9e3789febc4be81470df629cad6ddb03320a5c"
+        },
+        {
+          "id": 5969,
+          "gold_sha256": "44bd7ae60f478fae1061e11a7739f4b94d1daf917982d33b6fc8a01a63f89c21"
+        },
+        {
+          "id": 5475,
+          "gold_sha256": "44bd7ae60f478fae1061e11a7739f4b94d1daf917982d33b6fc8a01a63f89c21"
+        },
+        {
+          "id": 5885,
+          "gold_sha256": "6da43b944e494e885e69af021f93c6d9331c78aa228084711429160a5bbd15b5"
+        },
+        {
+          "id": 6078,
+          "gold_sha256": "44bd7ae60f478fae1061e11a7739f4b94d1daf917982d33b6fc8a01a63f89c21"
+        },
+        {
+          "id": 5145,
+          "gold_sha256": "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd"
+        },
+        {
+          "id": 5979,
+          "gold_sha256": "6da43b944e494e885e69af021f93c6d9331c78aa228084711429160a5bbd15b5"
+        },
+        {
+          "id": 5934,
+          "gold_sha256": "a9f51566bd6705f7ea6ad54bb9deb449f795582d6529a0e22207b8981233ec58"
+        },
+        {
+          "id": 6345,
+          "gold_sha256": "f67ab10ad4e4c53121b6a5fe4da9c10ddee905b978d3788d2723d7bfacbe28a9"
+        },
+        {
+          "id": 6336,
+          "gold_sha256": "f67ab10ad4e4c53121b6a5fe4da9c10ddee905b978d3788d2723d7bfacbe28a9"
+        },
+        {
+          "id": 6986,
+          "gold_sha256": "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd"
+        },
+        {
+          "id": 6640,
+          "gold_sha256": "6b23c0d5f35d1b11f9b683f0b0a617355deb11277d91ae091d399c655b87940d"
+        },
+        {
+          "id": 6663,
+          "gold_sha256": "3f39d5c348e5b79d06e842c114e6cc571583bbf44e4b0ebfda1a01ec05745d43"
+        },
+        {
+          "id": 6491,
+          "gold_sha256": "333e0a1e27815d0ceee55c473fe3dc93d56c63e3bee2b3b4aee8eed6d70191a3"
+        },
+        {
+          "id": 4208,
+          "gold_sha256": "6b23c0d5f35d1b11f9b683f0b0a617355deb11277d91ae091d399c655b87940d"
+        },
+        {
+          "id": 6988,
+          "gold_sha256": "a9f51566bd6705f7ea6ad54bb9deb449f795582d6529a0e22207b8981233ec58"
+        },
+        {
+          "id": 7352,
+          "gold_sha256": "f67ab10ad4e4c53121b6a5fe4da9c10ddee905b978d3788d2723d7bfacbe28a9"
+        },
+        {
+          "id": 7070,
+          "gold_sha256": "3f39d5c348e5b79d06e842c114e6cc571583bbf44e4b0ebfda1a01ec05745d43"
+        },
+        {
+          "id": 7400,
+          "gold_sha256": "6b23c0d5f35d1b11f9b683f0b0a617355deb11277d91ae091d399c655b87940d"
+        },
+        {
+          "id": 7155,
+          "gold_sha256": "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd"
+        },
+        {
+          "id": 4497,
+          "gold_sha256": "a83dd0ccbffe39d071cc317ddf6e97f5c6b1c87af91919271f9fa140b0508c6c"
+        },
+        {
+          "id": 7611,
+          "gold_sha256": "a9f51566bd6705f7ea6ad54bb9deb449f795582d6529a0e22207b8981233ec58"
+        },
+        {
+          "id": 7712,
+          "gold_sha256": "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd"
+        },
+        {
+          "id": 7319,
+          "gold_sha256": "a9f51566bd6705f7ea6ad54bb9deb449f795582d6529a0e22207b8981233ec58"
+        },
+        {
+          "id": 7733,
+          "gold_sha256": "f67ab10ad4e4c53121b6a5fe4da9c10ddee905b978d3788d2723d7bfacbe28a9"
+        },
+        {
+          "id": 7500,
+          "gold_sha256": "44bd7ae60f478fae1061e11a7739f4b94d1daf917982d33b6fc8a01a63f89c21"
+        },
+        {
+          "id": 7382,
+          "gold_sha256": "3f39d5c348e5b79d06e842c114e6cc571583bbf44e4b0ebfda1a01ec05745d43"
+        },
+        {
+          "id": 7929,
+          "gold_sha256": "a83dd0ccbffe39d071cc317ddf6e97f5c6b1c87af91919271f9fa140b0508c6c"
+        },
+        {
+          "id": 7793,
+          "gold_sha256": "6b23c0d5f35d1b11f9b683f0b0a617355deb11277d91ae091d399c655b87940d"
+        },
+        {
+          "id": 7923,
+          "gold_sha256": "44bd7ae60f478fae1061e11a7739f4b94d1daf917982d33b6fc8a01a63f89c21"
+        },
+        {
+          "id": 7816,
+          "gold_sha256": "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd"
+        },
+        {
+          "id": 7897,
+          "gold_sha256": "44bd7ae60f478fae1061e11a7739f4b94d1daf917982d33b6fc8a01a63f89c21"
+        },
+        {
+          "id": 8133,
+          "gold_sha256": "3f39d5c348e5b79d06e842c114e6cc571583bbf44e4b0ebfda1a01ec05745d43"
+        },
+        {
+          "id": 7623,
+          "gold_sha256": "3f39d5c348e5b79d06e842c114e6cc571583bbf44e4b0ebfda1a01ec05745d43"
+        },
+        {
+          "id": 8117,
+          "gold_sha256": "a83dd0ccbffe39d071cc317ddf6e97f5c6b1c87af91919271f9fa140b0508c6c"
+        },
+        {
+          "id": 8321,
+          "gold_sha256": "a83dd0ccbffe39d071cc317ddf6e97f5c6b1c87af91919271f9fa140b0508c6c"
+        },
+        {
+          "id": 8159,
+          "gold_sha256": "df7e70e5021544f4834bbee64a9e3789febc4be81470df629cad6ddb03320a5c"
+        },
+        {
+          "id": 7777,
+          "gold_sha256": "df7e70e5021544f4834bbee64a9e3789febc4be81470df629cad6ddb03320a5c"
+        },
+        {
+          "id": 8387,
+          "gold_sha256": "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd"
+        },
+        {
+          "id": 8489,
+          "gold_sha256": "333e0a1e27815d0ceee55c473fe3dc93d56c63e3bee2b3b4aee8eed6d70191a3"
+        },
+        {
+          "id": 8372,
+          "gold_sha256": "44bd7ae60f478fae1061e11a7739f4b94d1daf917982d33b6fc8a01a63f89c21"
+        },
+        {
+          "id": 8065,
+          "gold_sha256": "df7e70e5021544f4834bbee64a9e3789febc4be81470df629cad6ddb03320a5c"
+        },
+        {
+          "id": 8693,
+          "gold_sha256": "f67ab10ad4e4c53121b6a5fe4da9c10ddee905b978d3788d2723d7bfacbe28a9"
+        },
+        {
+          "id": 7980,
+          "gold_sha256": "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd"
+        },
+        {
+          "id": 8866,
+          "gold_sha256": "f67ab10ad4e4c53121b6a5fe4da9c10ddee905b978d3788d2723d7bfacbe28a9"
+        },
+        {
+          "id": 8874,
+          "gold_sha256": "a83dd0ccbffe39d071cc317ddf6e97f5c6b1c87af91919271f9fa140b0508c6c"
+        },
+        {
+          "id": 8511,
+          "gold_sha256": "333e0a1e27815d0ceee55c473fe3dc93d56c63e3bee2b3b4aee8eed6d70191a3"
+        },
+        {
+          "id": 8868,
+          "gold_sha256": "44bd7ae60f478fae1061e11a7739f4b94d1daf917982d33b6fc8a01a63f89c21"
+        },
+        {
+          "id": 9054,
+          "gold_sha256": "44bd7ae60f478fae1061e11a7739f4b94d1daf917982d33b6fc8a01a63f89c21"
+        },
+        {
+          "id": 9305,
+          "gold_sha256": "44bd7ae60f478fae1061e11a7739f4b94d1daf917982d33b6fc8a01a63f89c21"
+        },
+        {
+          "id": 9184,
+          "gold_sha256": "3f39d5c348e5b79d06e842c114e6cc571583bbf44e4b0ebfda1a01ec05745d43"
+        },
+        {
+          "id": 9320,
+          "gold_sha256": "44bd7ae60f478fae1061e11a7739f4b94d1daf917982d33b6fc8a01a63f89c21"
+        },
+        {
+          "id": 9414,
+          "gold_sha256": "333e0a1e27815d0ceee55c473fe3dc93d56c63e3bee2b3b4aee8eed6d70191a3"
+        },
+        {
+          "id": 9699,
+          "gold_sha256": "333e0a1e27815d0ceee55c473fe3dc93d56c63e3bee2b3b4aee8eed6d70191a3"
+        },
+        {
+          "id": 9729,
+          "gold_sha256": "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd"
+        },
+        {
+          "id": 8310,
+          "gold_sha256": "a9f51566bd6705f7ea6ad54bb9deb449f795582d6529a0e22207b8981233ec58"
+        },
+        {
+          "id": 9739,
+          "gold_sha256": "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd"
+        },
+        {
+          "id": 9135,
+          "gold_sha256": "a9f51566bd6705f7ea6ad54bb9deb449f795582d6529a0e22207b8981233ec58"
+        },
+        {
+          "id": 7852,
+          "gold_sha256": "6da43b944e494e885e69af021f93c6d9331c78aa228084711429160a5bbd15b5"
+        },
+        {
+          "id": 9766,
+          "gold_sha256": "df7e70e5021544f4834bbee64a9e3789febc4be81470df629cad6ddb03320a5c"
+        },
+        {
+          "id": 8429,
+          "gold_sha256": "333e0a1e27815d0ceee55c473fe3dc93d56c63e3bee2b3b4aee8eed6d70191a3"
+        },
+        {
+          "id": 9940,
+          "gold_sha256": "3f39d5c348e5b79d06e842c114e6cc571583bbf44e4b0ebfda1a01ec05745d43"
+        },
+        {
+          "id": 9817,
+          "gold_sha256": "df7e70e5021544f4834bbee64a9e3789febc4be81470df629cad6ddb03320a5c"
+        },
+        {
+          "id": 8943,
+          "gold_sha256": "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd"
+        },
+        {
+          "id": 10666,
+          "gold_sha256": "3f39d5c348e5b79d06e842c114e6cc571583bbf44e4b0ebfda1a01ec05745d43"
+        },
+        {
+          "id": 10415,
+          "gold_sha256": "333e0a1e27815d0ceee55c473fe3dc93d56c63e3bee2b3b4aee8eed6d70191a3"
+        },
+        {
+          "id": 10436,
+          "gold_sha256": "f67ab10ad4e4c53121b6a5fe4da9c10ddee905b978d3788d2723d7bfacbe28a9"
+        },
+        {
+          "id": 10048,
+          "gold_sha256": "df7e70e5021544f4834bbee64a9e3789febc4be81470df629cad6ddb03320a5c"
+        },
+        {
+          "id": 10835,
+          "gold_sha256": "f67ab10ad4e4c53121b6a5fe4da9c10ddee905b978d3788d2723d7bfacbe28a9"
+        },
+        {
+          "id": 8625,
+          "gold_sha256": "a83dd0ccbffe39d071cc317ddf6e97f5c6b1c87af91919271f9fa140b0508c6c"
+        },
+        {
+          "id": 10968,
+          "gold_sha256": "6b23c0d5f35d1b11f9b683f0b0a617355deb11277d91ae091d399c655b87940d"
+        },
+        {
+          "id": 10712,
+          "gold_sha256": "a9f51566bd6705f7ea6ad54bb9deb449f795582d6529a0e22207b8981233ec58"
+        },
+        {
+          "id": 10771,
+          "gold_sha256": "6b23c0d5f35d1b11f9b683f0b0a617355deb11277d91ae091d399c655b87940d"
+        },
+        {
+          "id": 9676,
+          "gold_sha256": "333e0a1e27815d0ceee55c473fe3dc93d56c63e3bee2b3b4aee8eed6d70191a3"
+        },
+        {
+          "id": 11069,
+          "gold_sha256": "3f39d5c348e5b79d06e842c114e6cc571583bbf44e4b0ebfda1a01ec05745d43"
+        },
+        {
+          "id": 10952,
+          "gold_sha256": "333e0a1e27815d0ceee55c473fe3dc93d56c63e3bee2b3b4aee8eed6d70191a3"
+        },
+        {
+          "id": 11169,
+          "gold_sha256": "f67ab10ad4e4c53121b6a5fe4da9c10ddee905b978d3788d2723d7bfacbe28a9"
+        },
+        {
+          "id": 11206,
+          "gold_sha256": "df7e70e5021544f4834bbee64a9e3789febc4be81470df629cad6ddb03320a5c"
+        },
+        {
+          "id": 11153,
+          "gold_sha256": "a9f51566bd6705f7ea6ad54bb9deb449f795582d6529a0e22207b8981233ec58"
+        },
+        {
+          "id": 11283,
+          "gold_sha256": "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd"
+        },
+        {
+          "id": 11223,
+          "gold_sha256": "3f39d5c348e5b79d06e842c114e6cc571583bbf44e4b0ebfda1a01ec05745d43"
+        },
+        {
+          "id": 11122,
+          "gold_sha256": "3f39d5c348e5b79d06e842c114e6cc571583bbf44e4b0ebfda1a01ec05745d43"
+        },
+        {
+          "id": 11275,
+          "gold_sha256": "6b23c0d5f35d1b11f9b683f0b0a617355deb11277d91ae091d399c655b87940d"
+        },
+        {
+          "id": 10985,
+          "gold_sha256": "6b23c0d5f35d1b11f9b683f0b0a617355deb11277d91ae091d399c655b87940d"
+        },
+        {
+          "id": 11579,
+          "gold_sha256": "a9f51566bd6705f7ea6ad54bb9deb449f795582d6529a0e22207b8981233ec58"
+        },
+        {
+          "id": 11736,
+          "gold_sha256": "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd"
+        },
+        {
+          "id": 9774,
+          "gold_sha256": "3f39d5c348e5b79d06e842c114e6cc571583bbf44e4b0ebfda1a01ec05745d43"
+        },
+        {
+          "id": 11682,
+          "gold_sha256": "a83dd0ccbffe39d071cc317ddf6e97f5c6b1c87af91919271f9fa140b0508c6c"
+        },
+        {
+          "id": 10290,
+          "gold_sha256": "a83dd0ccbffe39d071cc317ddf6e97f5c6b1c87af91919271f9fa140b0508c6c"
+        },
+        {
+          "id": 11694,
+          "gold_sha256": "a9f51566bd6705f7ea6ad54bb9deb449f795582d6529a0e22207b8981233ec58"
+        },
+        {
+          "id": 11509,
+          "gold_sha256": "f67ab10ad4e4c53121b6a5fe4da9c10ddee905b978d3788d2723d7bfacbe28a9"
+        },
+        {
+          "id": 11772,
+          "gold_sha256": "44bd7ae60f478fae1061e11a7739f4b94d1daf917982d33b6fc8a01a63f89c21"
+        },
+        {
+          "id": 11919,
+          "gold_sha256": "6b23c0d5f35d1b11f9b683f0b0a617355deb11277d91ae091d399c655b87940d"
+        },
+        {
+          "id": 11856,
+          "gold_sha256": "a83dd0ccbffe39d071cc317ddf6e97f5c6b1c87af91919271f9fa140b0508c6c"
+        },
+        {
+          "id": 12243,
+          "gold_sha256": "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd"
+        },
+        {
+          "id": 12032,
+          "gold_sha256": "44bd7ae60f478fae1061e11a7739f4b94d1daf917982d33b6fc8a01a63f89c21"
+        },
+        {
+          "id": 11732,
+          "gold_sha256": "6da43b944e494e885e69af021f93c6d9331c78aa228084711429160a5bbd15b5"
+        },
+        {
+          "id": 11913,
+          "gold_sha256": "f67ab10ad4e4c53121b6a5fe4da9c10ddee905b978d3788d2723d7bfacbe28a9"
+        },
+        {
+          "id": 12023,
+          "gold_sha256": "3f39d5c348e5b79d06e842c114e6cc571583bbf44e4b0ebfda1a01ec05745d43"
+        }
+      ],
+      "on_ids": [
+        97,
+        331,
+        648,
+        165,
+        725,
+        389,
+        699,
+        819,
+        579,
+        830,
+        859,
+        311,
+        864,
+        735,
+        964,
+        1138,
+        357,
+        749,
+        518,
+        1167,
+        193,
+        1243,
+        1206,
+        1240,
+        1333,
+        1280,
+        1114,
+        1465,
+        1548,
+        1076,
+        1068,
+        1587,
+        1526,
+        1784,
+        1371,
+        1318,
+        1706,
+        1225,
+        2056,
+        2129,
+        2010,
+        2373,
+        2245,
+        2458,
+        2466,
+        2477,
+        1576,
+        2536,
+        2415,
+        2611,
+        2532,
+        1527,
+        2803,
+        2683,
+        2645,
+        2855,
+        2920,
+        2820,
+        2980,
+        2902,
+        3023,
+        3161,
+        3309,
+        3398
+      ],
+      "off": {
+        "task": "mmlupro",
+        "think": false,
+        "n": 200,
+        "correct": 150,
+        "acc": 0.75,
+        "errors": 0,
+        "truncated": 14,
+        "mean_completion_tokens": 495.82,
+        "wall_s": 845
+      },
+      "on": {
+        "task": "mmlupro",
+        "think": true,
+        "n": 64,
+        "correct": 46,
+        "acc": 0.71875,
+        "truncated": 9,
+        "partial": true,
+        "mean_completion_tokens": 3583.21875
+      }
+    },
+    "ceval": {
+      "samples": [
+        {
+          "id": "accountant-35",
+          "gold_sha256": "3f39d5c348e5b79d06e842c114e6cc571583bbf44e4b0ebfda1a01ec05745d43"
+        },
+        {
+          "id": "accountant-29",
+          "gold_sha256": "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd"
+        },
+        {
+          "id": "art_studies-3",
+          "gold_sha256": "6b23c0d5f35d1b11f9b683f0b0a617355deb11277d91ae091d399c655b87940d"
+        },
+        {
+          "id": "accountant-15",
+          "gold_sha256": "df7e70e5021544f4834bbee64a9e3789febc4be81470df629cad6ddb03320a5c"
+        },
+        {
+          "id": "art_studies-14",
+          "gold_sha256": "df7e70e5021544f4834bbee64a9e3789febc4be81470df629cad6ddb03320a5c"
+        },
+        {
+          "id": "art_studies-13",
+          "gold_sha256": "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd"
+        },
+        {
+          "id": "accountant-39",
+          "gold_sha256": "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd"
+        },
+        {
+          "id": "art_studies-24",
+          "gold_sha256": "3f39d5c348e5b79d06e842c114e6cc571583bbf44e4b0ebfda1a01ec05745d43"
+        },
+        {
+          "id": "basic_medicine-9",
+          "gold_sha256": "6b23c0d5f35d1b11f9b683f0b0a617355deb11277d91ae091d399c655b87940d"
+        },
+        {
+          "id": "accountant-11",
+          "gold_sha256": "3f39d5c348e5b79d06e842c114e6cc571583bbf44e4b0ebfda1a01ec05745d43"
+        },
+        {
+          "id": "art_studies-26",
+          "gold_sha256": "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd"
+        },
+        {
+          "id": "business_administration-9",
+          "gold_sha256": "df7e70e5021544f4834bbee64a9e3789febc4be81470df629cad6ddb03320a5c"
+        },
+        {
+          "id": "business_administration-20",
+          "gold_sha256": "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd"
+        },
+        {
+          "id": "chinese_language_and_literature-1",
+          "gold_sha256": "df7e70e5021544f4834bbee64a9e3789febc4be81470df629cad6ddb03320a5c"
+        },
+        {
+          "id": "art_studies-16",
+          "gold_sha256": "df7e70e5021544f4834bbee64a9e3789febc4be81470df629cad6ddb03320a5c"
+        },
+        {
+          "id": "business_administration-12",
+          "gold_sha256": "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd"
+        },
+        {
+          "id": "chinese_language_and_literature-18",
+          "gold_sha256": "6b23c0d5f35d1b11f9b683f0b0a617355deb11277d91ae091d399c655b87940d"
+        },
+        {
+          "id": "business_administration-24",
+          "gold_sha256": "df7e70e5021544f4834bbee64a9e3789febc4be81470df629cad6ddb03320a5c"
+        },
+        {
+          "id": "chinese_language_and_literature-3",
+          "gold_sha256": "6b23c0d5f35d1b11f9b683f0b0a617355deb11277d91ae091d399c655b87940d"
+        },
+        {
+          "id": "civil_servant-6",
+          "gold_sha256": "3f39d5c348e5b79d06e842c114e6cc571583bbf44e4b0ebfda1a01ec05745d43"
+        },
+        {
+          "id": "clinical_medicine-4",
+          "gold_sha256": "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd"
+        },
+        {
+          "id": "civil_servant-25",
+          "gold_sha256": "6b23c0d5f35d1b11f9b683f0b0a617355deb11277d91ae091d399c655b87940d"
+        },
+        {
+          "id": "civil_servant-10",
+          "gold_sha256": "6b23c0d5f35d1b11f9b683f0b0a617355deb11277d91ae091d399c655b87940d"
+        },
+        {
+          "id": "accountant-32",
+          "gold_sha256": "6b23c0d5f35d1b11f9b683f0b0a617355deb11277d91ae091d399c655b87940d"
+        },
+        {
+          "id": "civil_servant-9",
+          "gold_sha256": "3f39d5c348e5b79d06e842c114e6cc571583bbf44e4b0ebfda1a01ec05745d43"
+        },
+        {
+          "id": "clinical_medicine-16",
+          "gold_sha256": "df7e70e5021544f4834bbee64a9e3789febc4be81470df629cad6ddb03320a5c"
+        },
+        {
+          "id": "college_economics-35",
+          "gold_sha256": "df7e70e5021544f4834bbee64a9e3789febc4be81470df629cad6ddb03320a5c"
+        },
+        {
+          "id": "college_economics-26",
+          "gold_sha256": "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd"
+        },
+        {
+          "id": "college_economics-25",
+          "gold_sha256": "6b23c0d5f35d1b11f9b683f0b0a617355deb11277d91ae091d399c655b87940d"
+        },
+        {
+          "id": "college_physics-11",
+          "gold_sha256": "6b23c0d5f35d1b11f9b683f0b0a617355deb11277d91ae091d399c655b87940d"
+        },
+        {
+          "id": "clinical_medicine-11",
+          "gold_sha256": "6b23c0d5f35d1b11f9b683f0b0a617355deb11277d91ae091d399c655b87940d"
+        },
+        {
+          "id": "college_economics-20",
+          "gold_sha256": "6b23c0d5f35d1b11f9b683f0b0a617355deb11277d91ae091d399c655b87940d"
+        },
+        {
+          "id": "advanced_mathematics-6",
+          "gold_sha256": "df7e70e5021544f4834bbee64a9e3789febc4be81470df629cad6ddb03320a5c"
+        },
+        {
+          "id": "college_economics-47",
+          "gold_sha256": "df7e70e5021544f4834bbee64a9e3789febc4be81470df629cad6ddb03320a5c"
+        },
+        {
+          "id": "college_programming-5",
+          "gold_sha256": "6b23c0d5f35d1b11f9b683f0b0a617355deb11277d91ae091d399c655b87940d"
+        },
+        {
+          "id": "college_programming-20",
+          "gold_sha256": "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd"
+        },
+        {
+          "id": "college_programming-31",
+          "gold_sha256": "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd"
+        },
+        {
+          "id": "education_science-4",
+          "gold_sha256": "3f39d5c348e5b79d06e842c114e6cc571583bbf44e4b0ebfda1a01ec05745d43"
+        },
+        {
+          "id": "computer_network-8",
+          "gold_sha256": "6b23c0d5f35d1b11f9b683f0b0a617355deb11277d91ae091d399c655b87940d"
+        },
+        {
+          "id": "environmental_impact_assessment_engineer-8",
+          "gold_sha256": "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd"
+        },
+        {
+          "id": "environmental_impact_assessment_engineer-9",
+          "gold_sha256": "6b23c0d5f35d1b11f9b683f0b0a617355deb11277d91ae091d399c655b87940d"
+        },
+        {
+          "id": "fire_engineer-12",
+          "gold_sha256": "3f39d5c348e5b79d06e842c114e6cc571583bbf44e4b0ebfda1a01ec05745d43"
+        },
+        {
+          "id": "electrical_engineer-19",
+          "gold_sha256": "df7e70e5021544f4834bbee64a9e3789febc4be81470df629cad6ddb03320a5c"
+        },
+        {
+          "id": "fire_engineer-23",
+          "gold_sha256": "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd"
+        },
+        {
+          "id": "advanced_mathematics-14",
+          "gold_sha256": "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd"
+        },
+        {
+          "id": "high_school_geography-4",
+          "gold_sha256": "df7e70e5021544f4834bbee64a9e3789febc4be81470df629cad6ddb03320a5c"
+        },
+        {
+          "id": "fire_engineer-19",
+          "gold_sha256": "6b23c0d5f35d1b11f9b683f0b0a617355deb11277d91ae091d399c655b87940d"
+        },
+        {
+          "id": "high_school_biology-2",
+          "gold_sha256": "df7e70e5021544f4834bbee64a9e3789febc4be81470df629cad6ddb03320a5c"
+        },
+        {
+          "id": "high_school_politics-2",
+          "gold_sha256": "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd"
+        },
+        {
+          "id": "high_school_chinese-3",
+          "gold_sha256": "3f39d5c348e5b79d06e842c114e6cc571583bbf44e4b0ebfda1a01ec05745d43"
+        },
+        {
+          "id": "high_school_physics-5",
+          "gold_sha256": "df7e70e5021544f4834bbee64a9e3789febc4be81470df629cad6ddb03320a5c"
+        },
+        {
+          "id": "high_school_politics-11",
+          "gold_sha256": "6b23c0d5f35d1b11f9b683f0b0a617355deb11277d91ae091d399c655b87940d"
+        },
+        {
+          "id": "ideological_and_moral_cultivation-11",
+          "gold_sha256": "3f39d5c348e5b79d06e842c114e6cc571583bbf44e4b0ebfda1a01ec05745d43"
+        },
+        {
+          "id": "high_school_chinese-17",
+          "gold_sha256": "3f39d5c348e5b79d06e842c114e6cc571583bbf44e4b0ebfda1a01ec05745d43"
+        },
+        {
+          "id": "metrology_engineer-5",
+          "gold_sha256": "6b23c0d5f35d1b11f9b683f0b0a617355deb11277d91ae091d399c655b87940d"
+        },
+        {
+          "id": "ideological_and_moral_cultivation-10",
+          "gold_sha256": "6b23c0d5f35d1b11f9b683f0b0a617355deb11277d91ae091d399c655b87940d"
+        },
+        {
+          "id": "high_school_chinese-12",
+          "gold_sha256": "6b23c0d5f35d1b11f9b683f0b0a617355deb11277d91ae091d399c655b87940d"
+        },
+        {
+          "id": "high_school_politics-18",
+          "gold_sha256": "6b23c0d5f35d1b11f9b683f0b0a617355deb11277d91ae091d399c655b87940d"
+        },
+        {
+          "id": "middle_school_chemistry-4",
+          "gold_sha256": "3f39d5c348e5b79d06e842c114e6cc571583bbf44e4b0ebfda1a01ec05745d43"
+        },
+        {
+          "id": "high_school_politics-12",
+          "gold_sha256": "df7e70e5021544f4834bbee64a9e3789febc4be81470df629cad6ddb03320a5c"
+        },
+        {
+          "id": "middle_school_history-4",
+          "gold_sha256": "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd"
+        },
+        {
+          "id": "middle_school_history-6",
+          "gold_sha256": "df7e70e5021544f4834bbee64a9e3789febc4be81470df629cad6ddb03320a5c"
+        },
+        {
+          "id": "legal_professional-13",
+          "gold_sha256": "6b23c0d5f35d1b11f9b683f0b0a617355deb11277d91ae091d399c655b87940d"
+        },
+        {
+          "id": "middle_school_chemistry-8",
+          "gold_sha256": "6b23c0d5f35d1b11f9b683f0b0a617355deb11277d91ae091d399c655b87940d"
+        },
+        {
+          "id": "middle_school_mathematics-18",
+          "gold_sha256": "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd"
+        },
+        {
+          "id": "middle_school_chemistry-10",
+          "gold_sha256": "6b23c0d5f35d1b11f9b683f0b0a617355deb11277d91ae091d399c655b87940d"
+        },
+        {
+          "id": "middle_school_mathematics-5",
+          "gold_sha256": "3f39d5c348e5b79d06e842c114e6cc571583bbf44e4b0ebfda1a01ec05745d43"
+        },
+        {
+          "id": "middle_school_physics-9",
+          "gold_sha256": "6b23c0d5f35d1b11f9b683f0b0a617355deb11277d91ae091d399c655b87940d"
+        },
+        {
+          "id": "middle_school_mathematics-3",
+          "gold_sha256": "3f39d5c348e5b79d06e842c114e6cc571583bbf44e4b0ebfda1a01ec05745d43"
+        },
+        {
+          "id": "middle_school_physics-3",
+          "gold_sha256": "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd"
+        },
+        {
+          "id": "middle_school_mathematics-8",
+          "gold_sha256": "3f39d5c348e5b79d06e842c114e6cc571583bbf44e4b0ebfda1a01ec05745d43"
+        },
+        {
+          "id": "middle_school_mathematics-12",
+          "gold_sha256": "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd"
+        },
+        {
+          "id": "middle_school_politics-1",
+          "gold_sha256": "6b23c0d5f35d1b11f9b683f0b0a617355deb11277d91ae091d399c655b87940d"
+        },
+        {
+          "id": "modern_chinese_history-10",
+          "gold_sha256": "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd"
+        },
+        {
+          "id": "middle_school_politics-7",
+          "gold_sha256": "3f39d5c348e5b79d06e842c114e6cc571583bbf44e4b0ebfda1a01ec05745d43"
+        },
+        {
+          "id": "middle_school_politics-12",
+          "gold_sha256": "3f39d5c348e5b79d06e842c114e6cc571583bbf44e4b0ebfda1a01ec05745d43"
+        },
+        {
+          "id": "logic-8",
+          "gold_sha256": "df7e70e5021544f4834bbee64a9e3789febc4be81470df629cad6ddb03320a5c"
+        },
+        {
+          "id": "operating_system-12",
+          "gold_sha256": "6b23c0d5f35d1b11f9b683f0b0a617355deb11277d91ae091d399c655b87940d"
+        },
+        {
+          "id": "physician-16",
+          "gold_sha256": "6b23c0d5f35d1b11f9b683f0b0a617355deb11277d91ae091d399c655b87940d"
+        },
+        {
+          "id": "operating_system-2",
+          "gold_sha256": "df7e70e5021544f4834bbee64a9e3789febc4be81470df629cad6ddb03320a5c"
+        },
+        {
+          "id": "physician-7",
+          "gold_sha256": "3f39d5c348e5b79d06e842c114e6cc571583bbf44e4b0ebfda1a01ec05745d43"
+        },
+        {
+          "id": "professional_tour_guide-3",
+          "gold_sha256": "df7e70e5021544f4834bbee64a9e3789febc4be81470df629cad6ddb03320a5c"
+        },
+        {
+          "id": "professional_tour_guide-17",
+          "gold_sha256": "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd"
+        },
+        {
+          "id": "professional_tour_guide-5",
+          "gold_sha256": "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd"
+        },
+        {
+          "id": "modern_chinese_history-11",
+          "gold_sha256": "3f39d5c348e5b79d06e842c114e6cc571583bbf44e4b0ebfda1a01ec05745d43"
+        },
+        {
+          "id": "plant_protection-12",
+          "gold_sha256": "df7e70e5021544f4834bbee64a9e3789febc4be81470df629cad6ddb03320a5c"
+        },
+        {
+          "id": "tax_accountant-8",
+          "gold_sha256": "df7e70e5021544f4834bbee64a9e3789febc4be81470df629cad6ddb03320a5c"
+        },
+        {
+          "id": "physician-37",
+          "gold_sha256": "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd"
+        },
+        {
+          "id": "physician-38",
+          "gold_sha256": "6b23c0d5f35d1b11f9b683f0b0a617355deb11277d91ae091d399c655b87940d"
+        },
+        {
+          "id": "tax_accountant-9",
+          "gold_sha256": "6b23c0d5f35d1b11f9b683f0b0a617355deb11277d91ae091d399c655b87940d"
+        },
+        {
+          "id": "teacher_qualification-28",
+          "gold_sha256": "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd"
+        },
+        {
+          "id": "tax_accountant-34",
+          "gold_sha256": "df7e70e5021544f4834bbee64a9e3789febc4be81470df629cad6ddb03320a5c"
+        },
+        {
+          "id": "teacher_qualification-43",
+          "gold_sha256": "6b23c0d5f35d1b11f9b683f0b0a617355deb11277d91ae091d399c655b87940d"
+        },
+        {
+          "id": "tax_accountant-19",
+          "gold_sha256": "6b23c0d5f35d1b11f9b683f0b0a617355deb11277d91ae091d399c655b87940d"
+        },
+        {
+          "id": "tax_accountant-47",
+          "gold_sha256": "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd"
+        },
+        {
+          "id": "urban_and_rural_planner-43",
+          "gold_sha256": "df7e70e5021544f4834bbee64a9e3789febc4be81470df629cad6ddb03320a5c"
+        },
+        {
+          "id": "veterinary_medicine-19",
+          "gold_sha256": "3f39d5c348e5b79d06e842c114e6cc571583bbf44e4b0ebfda1a01ec05745d43"
+        },
+        {
+          "id": "veterinary_medicine-4",
+          "gold_sha256": "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd"
+        },
+        {
+          "id": "tax_accountant-1",
+          "gold_sha256": "df7e70e5021544f4834bbee64a9e3789febc4be81470df629cad6ddb03320a5c"
+        },
+        {
+          "id": "college_physics-18",
+          "gold_sha256": "6b23c0d5f35d1b11f9b683f0b0a617355deb11277d91ae091d399c655b87940d"
+        }
+      ],
+      "on_ids": [
+        "accountant-39",
+        "accountant-35",
+        "art_studies-3",
+        "accountant-29",
+        "accountant-11",
+        "accountant-15",
+        "art_studies-13",
+        "art_studies-24",
+        "art_studies-14",
+        "basic_medicine-9",
+        "advanced_mathematics-6",
+        "art_studies-16",
+        "art_studies-26",
+        "business_administration-24",
+        "business_administration-20",
+        "business_administration-12",
+        "chinese_language_and_literature-18",
+        "chinese_language_and_literature-1",
+        "advanced_mathematics-14",
+        "civil_servant-6",
+        "accountant-32",
+        "civil_servant-10",
+        "clinical_medicine-4",
+        "clinical_medicine-16",
+        "civil_servant-9",
+        "civil_servant-25",
+        "college_economics-25",
+        "college_economics-20",
+        "college_economics-35",
+        "college_physics-11",
+        "college_economics-47",
+        "college_economics-26",
+        "clinical_medicine-11",
+        "business_administration-9",
+        "college_programming-5",
+        "education_science-4",
+        "college_programming-20",
+        "college_programming-31",
+        "computer_network-8",
+        "fire_engineer-12",
+        "electrical_engineer-19",
+        "environmental_impact_assessment_engineer-8",
+        "environmental_impact_assessment_engineer-9",
+        "fire_engineer-23",
+        "high_school_biology-2",
+        "high_school_geography-4",
+        "high_school_chinese-17",
+        "high_school_physics-5",
+        "high_school_politics-2",
+        "high_school_politics-11",
+        "high_school_politics-12",
+        "ideological_and_moral_cultivation-11",
+        "high_school_politics-18",
+        "high_school_chinese-3",
+        "metrology_engineer-5",
+        "middle_school_chemistry-4",
+        "ideological_and_moral_cultivation-10",
+        "logic-8",
+        "fire_engineer-19",
+        "high_school_chinese-12",
+        "middle_school_history-4",
+        "middle_school_chemistry-8",
+        "middle_school_chemistry-10",
+        "middle_school_mathematics-3",
+        "middle_school_mathematics-5",
+        "middle_school_mathematics-18",
+        "middle_school_mathematics-8",
+        "middle_school_mathematics-12",
+        "middle_school_physics-9",
+        "middle_school_history-6",
+        "middle_school_politics-1",
+        "middle_school_physics-3",
+        "middle_school_politics-12",
+        "middle_school_politics-7",
+        "modern_chinese_history-10",
+        "operating_system-12",
+        "physician-7",
+        "modern_chinese_history-11",
+        "plant_protection-12",
+        "physician-38",
+        "professional_tour_guide-3",
+        "physician-37",
+        "professional_tour_guide-17",
+        "operating_system-2",
+        "physician-16",
+        "professional_tour_guide-5",
+        "tax_accountant-8",
+        "tax_accountant-19",
+        "tax_accountant-34",
+        "teacher_qualification-28",
+        "tax_accountant-9",
+        "tax_accountant-1",
+        "urban_and_rural_planner-43",
+        "teacher_qualification-43",
+        "veterinary_medicine-19",
+        "veterinary_medicine-4",
+        "legal_professional-13",
+        "tax_accountant-47",
+        "chinese_language_and_literature-3",
+        "college_physics-18"
+      ],
+      "off": {
+        "task": "ceval",
+        "think": false,
+        "n": 100,
+        "correct": 93,
+        "acc": 0.93,
+        "errors": 0,
+        "truncated": 1,
+        "mean_completion_tokens": 122.41,
+        "wall_s": 233
+      },
+      "on": {
+        "task": "ceval",
+        "think": true,
+        "n": 100,
+        "correct": 92,
+        "acc": 0.92,
+        "errors": 0,
+        "truncated": 1,
+        "mean_completion_tokens": 466.7,
+        "wall_s": 842
+      }
+    },
+    "tools": {
+      "off": {
+        "n": 10,
+        "correct": 10
+      },
+      "on": null
+    }
+  },
+  "upstream_files": {
+    "results/eval/eval1017.py": "db380e34c1a0fda26c743548f7286f7c0883bf7ea6f39a40c3380d79ab3ab7b0",
+    "results/eval/run_all.sh": "3fff74c244b60edfdf575fd3def126471ba95cff43cdfb06d29963113dda80b8",
+    "results/eval/make_samples.py": "aead97ffd2d60de656cafb655bb581fdfeeb0aa386aec35f50fc4cc4d961727e",
+    "results/data/quality/humaneval-thinkoff.summary.json": "3fa33b3bbd48598a88e43d32673d9903b2f1253762446806753409a979645347",
+    "results/data/quality/humaneval-thinkon-retry-conc1.jsonl": "7baf7d670567f4148ee00b25a0cc212c2c8b9f1a8e17d28e95f87b01b78bac8b",
+    "results/data/quality/mmlupro-thinkon.jsonl": "07adbe402ae17c548fbb469f6a4bd0090a9d04421db29e0d5be1ed1b0230f8e7",
+    "results/data/quality/math500-thinkoff.jsonl": "07ec41003166d06c5196a33de5d7f68fd6ac9c5ec89c0ffc9bec9bb9a3873c93",
+    "results/data/quality/tools.jsonl": "06d4335130bb97e3158b2ae7fa029eed51b2c4a3f27068fdc5ccc96456f247f0",
+    "results/data/quality/mmlupro-thinkoff.summary.json": "ad3304261aa70723197dc054aaac3e5d0c5e2f50fb96d232faf235a87ff0fb09",
+    "results/data/quality/math500-thinkoff.summary.json": "4c81e91d130721b14d3555b5186c15f53a8b79ddd7a33aae0b438786172cf19b",
+    "results/data/quality/math500-thinkon.summary.json": "b4a50bbbb7653f811bab8923700f45ebe89aaa1cb7c4d3b57b6c951eaf5bc123",
+    "results/data/quality/math500-thinkon.jsonl": "ce807c1597649c45c73a150bcfd558f169054e9b0439e4fdb2307c16e4dc01b0",
+    "results/data/quality/ceval-thinkon.summary.json": "1d8227d495a4704ec8a7df40236f53a08d3c8d6208105dfe5083d16b4b6814d8",
+    "results/data/quality/tools.summary.json": "208232be1488a95364d06b4f07187e5256a9163616591607a1f7468aa90861c2",
+    "results/data/quality/ceval-thinkoff.summary.json": "89b329645386b21ad1db03fbc096bc0ac7ea40d6300f688343ca44ab99c201b2",
+    "results/data/quality/mmlupro-thinkon.summary.json": "4cabd5e29dced839f8b5a0b5d20b60398037b136fdf29a87e5f145b756b39f02",
+    "results/data/quality/ceval-thinkon.jsonl": "6ed9c6a7253149af07230a4b7ae4caddc1c43dbaba8c78718d0f77eb0c95b619",
+    "results/data/quality/gsm8k-thinkoff.jsonl": "09b0008635dc510ce150810e0379ac3aa60afcc366571e196b71b218271ab91a",
+    "results/data/quality/gsm8k-thinkon.summary.json": "64d2f4acc600d09655652eef9b675f82cbfce175768cb36a1244d9b75805ae1b",
+    "results/data/quality/humaneval-thinkoff.jsonl": "d675d2532b00a2a5821c3d07572eb607a87f06c57fcfc492fbc7b02abee1c896",
+    "results/data/quality/humaneval-thinkon.summary.json": "884aba1e746b31578fa27cc3bdd728d4127f7e878f886cdf6eef035132ab3e75",
+    "results/data/quality/ceval-thinkoff.jsonl": "12f676ab476191657fa2079570d2ee82284d632b30c04f9452a888243ae429e9",
+    "results/data/quality/humaneval-thinkon.jsonl": "05ee122bc9dcf057b90fe283e56bdc6f0084d7719d2be8e3f69ae7842e3a5c6c",
+    "results/data/quality/gsm8k-thinkon.jsonl": "855c67073400b55b3217e1bb7f09e13ad4fab4b5a91922d37393c50f39a3a5cf",
+    "results/data/quality/gsm8k-thinkoff.summary.json": "e7bd51187a009d346fadd1081cea778781cf2e6d8aeda02c29f32e9a9861b0ba",
+    "results/data/quality/mmlupro-thinkoff.jsonl": "39ce2f92941ee850f6046be8cab8c6e3f47b3e3717185fa1715239e7ca42342c"
+  }
+}

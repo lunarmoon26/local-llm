@@ -1,0 +1,14 @@
+Strata/
+Strata-data/
+logs/
+__pycache__/
+.env
+.env.*
+!.env.example
+.venv/
+.pytest_cache/
+.maya-deepseek-1017.json*
+Project-Maya/
+/evaluation/samples/
+/evaluation/out/
+/evaluation/.venv/

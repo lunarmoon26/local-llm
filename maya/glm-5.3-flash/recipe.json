@@ -1,0 +1,13 @@
+{
+  "schema": "local-llm.recipe/1",
+  "id": "maya/glm-5.3-flash",
+  "kind": "maya-glm",
+  "api_model": "glm-5.3-flash",
+  "config": "logs/maya-glm.json",
+  "python": ".venv/bin/python",
+  "python_env": ["MAYA_PYTHON"],
+  "locks": ["logs/assets.lock", "logs/build.lock"],
+  "source_revision": "c4effee67cb95fb4303720919b075fddf04b4e69",
+  "min_free_mib": 84000,
+  "config_sha256": "40c798229c85bf9037b9957a146c60f0e35a67e38c7f8cf26363be019c78dd30"
+}

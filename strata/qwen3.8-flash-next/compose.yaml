@@ -1,0 +1,37 @@
+services:
+  strata:
+    image: qwen3.8-flash-next:strata-iq4
+    build:
+      context: .
+    # Linux host networking keeps the unauthenticated listener on loopback.
+    network_mode: host
+    init: true
+    restart: "no"
+    stop_grace_period: 60s
+    # This host uses NVIDIA CDI, not the legacy `--gpus` runtime integration.
+    devices:
+      - nvidia.com/gpu=0
+      - nvidia.com/gpu=1
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - type: bind
+        source: /mnt/deepseek-nvme1/strata-data/models/unsloth-UD-IQ4_XS
+        target: /data/model
+        read_only: true
+        bind:
+          create_host_path: false
+      - type: bind
+        source: /mnt/deepseek-nvme1/strata-data/packs/unsloth-ud-iq4_xs
+        target: /data/pack
+        read_only: true
+        bind:
+          create_host_path: false
+      - type: bind
+        source: ./Strata-data/mtp/rt
+        target: /data/mtp
+        read_only: true
+        bind:
+          create_host_path: false

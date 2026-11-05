@@ -1,0 +1,26 @@
+{
+  "name": "Maya DeepSeek 1017 (local)",
+  "package": "@opencode/ai/providers/openai-compatible",
+  "settings": {
+    "baseURL": "http://127.0.0.1:8080/v1",
+    "headerTimeout": 900000,
+    "chunkTimeout": 900000
+  },
+  "models": {
+    "deepseek-v4.1-flash-1017": {
+      "name": "DeepSeek V4.1 Flash 1017 EXL3 2.9 bpw (local)",
+      "capabilities": {
+        "tools": true,
+        "input": ["text"],
+        "output": ["text"],
+        "reasoning": {"supported": true}
+      },
+      "compatibility": {"reasoningField": "reasoning_content"},
+      "limit": {"context": 32768, "input": 24568, "output": 8192},
+      "variants": [
+        {"id": "fast", "body": {"chat_template_kwargs": {"enable_thinking": false}}},
+        {"id": "thinking", "body": {"chat_template_kwargs": {"enable_thinking": true}}}
+      ]
+    }
+  }
+}
