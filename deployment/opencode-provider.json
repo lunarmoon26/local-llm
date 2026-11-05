@@ -1,5 +1,5 @@
 {
-  "name": "Project Maya GLM (local)",
+  "name": "Local LLM",
   "package": "@opencode/ai/providers/openai-compatible",
   "settings": {
     "baseURL": "http://127.0.0.1:8080/v1",
@@ -28,6 +28,28 @@
         {"id": "fast", "body": {"reasoning_effort": "none", "chat_template_kwargs": {"enable_thinking": false}}},
         {"id": "thinking", "body": {"reasoning_effort": "high", "chat_template_kwargs": {"enable_thinking": true}}}
       ]
+    },
+    "deepseek-v4.1-flash-1017": {
+      "name": "DeepSeek V4.1 Flash 1017 EXL3 2.9 bpw (Maya, 512K)",
+      "capabilities": {
+        "tools": true,
+        "input": ["text"],
+        "output": ["text"],
+        "reasoning": {"supported": true}
+      },
+      "compatibility": {"reasoningField": "reasoning_content", "maxTokensField": "max_tokens"},
+      "limit": {"context": 524288, "input": 516088, "output": 8192},
+      "variants": [
+        {"id": "fast", "body": {"chat_template_kwargs": {"enable_thinking": false}}},
+        {"id": "thinking", "body": {"chat_template_kwargs": {"enable_thinking": true}}}
+      ]
+    },
+    "qwen3.8-flash-next-unsloth-ud-iq4_xs": {
+      "name": "Qwen3.8 Flash Next UD-IQ4_XS",
+      "settings": {"baseURL": "http://127.0.0.1:8080/v1"},
+      "capabilities": {"tools": true, "input": ["text"], "output": ["text"]},
+      "compatibility": {"reasoningField": "reasoning_content"},
+      "limit": {"context": 524288, "output": 8192}
     }
   }
 }

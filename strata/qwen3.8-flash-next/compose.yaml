@@ -30,7 +30,7 @@ services:
         bind:
           create_host_path: false
       - type: bind
-        source: ./Strata-data/mtp/rt
+        source: /mnt/deepseek-nvme1/strata-data/mtp/rt
         target: /data/mtp
         read_only: true
         bind:

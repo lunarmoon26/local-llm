@@ -7,9 +7,12 @@ if ! mountpoint -q /mnt/deepseek-nvme1; then
   exit 1
 fi
 mkdir -p "$ROOT/logs" "$DATA"
-# Reuse the already prepared draft layer without another download.
-if [[ ! -e "$DATA/mtp" && ! -L "$DATA/mtp" ]]; then
-  ln -s "$ROOT/Strata-data/mtp" "$DATA/mtp"
+# Preparation and serving share ownership of the draft assets.
+exec 9>"$ROOT/logs/assets.lock"
+flock -n -E 73 9
+if [[ -L "$DATA/mtp" ]]; then
+  echo 'MTP storage must be a real directory on the data disk, not a symlink.' >&2
+  exit 1
 fi
 cd "$ROOT/Strata"
 export STRATA_UV=1

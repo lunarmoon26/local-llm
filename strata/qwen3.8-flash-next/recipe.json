@@ -5,6 +5,7 @@
   "api_model": "qwen3.8-flash-next-unsloth-ud-iq4_xs",
   "config": "Strata/strata-unsloth-ud-iq4_xs.json",
   "python": "Strata/.venv/bin/python",
+  "locks": ["logs/assets.lock"],
   "source_revision": "fb58e0dbc8399662c0e47c76578c6e878b14f6cf",
   "min_free_mib": 45000
 }

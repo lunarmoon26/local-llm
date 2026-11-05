@@ -12,7 +12,8 @@ Engine: [Strata](https://github.com/Niko1221/Strata), pinned to
 - 524,288-token context window using experimental YaRN factor 2 (native: 262,144); images disabled.
 - Local-only server: http://127.0.0.1:8080.
 - Weights and prepared packs: `/mnt/deepseek-nvme1/strata-data/` on the SN8100.
-- Shared draft layer: `Strata-data/mtp/`; private Python environment: `Strata/.venv/`.
+- Draft assets: `/mnt/deepseek-nvme1/strata-data/mtp/`, stored directly on the NVMe;
+  native and Docker serving use its `rt/` directory. Private Python environment: `Strata/.venv/`.
 - 12 GiB expert RAM budget; int8 KV stays in VRAM.
 
 ## Commands
@@ -91,4 +92,5 @@ uses `--max-context 262144` without the scaling flags; client limits must agree.
 the verified engine split and 524K startup configuration directly. This avoids setup's Unsloth multi-GPU path,
 which would remove the RAM budget and load all experts into host RAM. Do not
 rerun plain `setup.sh --gpus` to configure this model on the 48 GB RAM host.
-The NVMe `mtp` symlink depends on `Strata-data/mtp`; keep that directory.
+The NVMe `mtp/` is a real directory, not a symlink into the project. Preparation
+and serving share an asset lock; the installer refuses symlinked MTP storage.
