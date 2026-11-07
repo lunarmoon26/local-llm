@@ -92,9 +92,35 @@ native and Docker configs use its `rt/` directory, without a Workspace data-fold
 
 `start.sh` runs the server in the background and waits for readiness. A different
 model, busy port, locked assets or insufficient VRAM causes refusal, not process
-termination. `stop.sh` sends SIGTERM only to the owned process and never escalates
-to SIGKILL. `--timeout SECONDS` controls either command's wait; startup timeout
-leaves a loading server running. Maya model management and boot services are off.
+termination. Closed TCP connections do not delay a Linux restart; an active
+listener still causes refusal. `stop.sh` sends SIGTERM to the verified wrapper
+and native engine children, including engines left behind after the wrapper exits.
+It reports success only when all have exited. `stop.sh --force` explicitly sends
+SIGKILL to those verified processes; normal stops never escalate automatically.
+If a process remains stuck even after SIGKILL, status stays `stopping` and the
+command reports its PID instead of claiming VRAM was released. Unrelated GPU
+processes are never stopped. `--timeout SECONDS` controls either command's wait;
+startup timeout leaves a loading server running. Maya model management and boot
+services are off.
+
+### Sleep protection
+
+Every managed start acquires a logind `sleep` inhibitor in `block` mode before
+launching the server. Normal suspend/hibernate requests are blocked while the
+model is loading, ready or stopping. A separate guardian retains the inhibitor
+and asset locks if the wrapper exits with a native engine still running; it
+releases them only after both have exited. `status.sh` reports
+`sleep_inhibitor.held`; successful stop waits for the guardian to release it.
+Startup refuses to load a model if the inhibitor cannot be acquired or sleep is
+already in progress. A healthy server without its guardian reports `unprotected`
+and must be stopped before starting again.
+
+The controller requires systemd-logind and `python3-dbus` for its system Python.
+No boot service or global sleep setting is installed. Shutdown/reboot and display
+blanking are not inhibited. Stop the model before sleeping; do not override the
+inhibitor with privileged/forced sleep commands. This protects managed starts,
+not engines launched outside the controller, and is not a fix for NVIDIA driver
+suspend/resume faults.
 
 ## Tests
 

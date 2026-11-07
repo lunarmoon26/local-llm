@@ -9,5 +9,5 @@
   "locks": ["logs/assets.lock", "logs/build.lock"],
   "source_revision": "c4effee67cb95fb4303720919b075fddf04b4e69",
   "min_free_mib": 84000,
-  "config_sha256": "40c798229c85bf9037b9957a146c60f0e35a67e38c7f8cf26363be019c78dd30"
+  "config_sha256": "b3181d97618dd7bdf2108a9e32bee50ff4072f87e789919ea5ba6838a67ae382"
 }

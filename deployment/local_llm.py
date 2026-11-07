@@ -25,6 +25,7 @@ OWNER = "local-llm/1"
 HOST, PORT = "127.0.0.1", 8080
 KINDS = {"maya-glm", "maya-deepseek", "strata-qwen"}
 _CHILDREN = {}  # Retain/reap children when lifecycle functions run in one Python process (tests/embedding).
+SLEEP_HELPER = Path(__file__).with_name("sleep_inhibitor.py")
 
 
 class BusyError(ValueError):
@@ -229,6 +230,98 @@ def owned_live(state):
         return False
 
 
+def native_processes(state):
+    """Identify engines in the recorded private session, including reparented ones."""
+    if not state or not state.get("config"):
+        return []
+    cfg = read_json(state["config"])
+    exe, cwd = Path(cfg["exe"]).resolve(), Path(cfg["cwd"]).resolve()
+    expected = [str(a) for a in cfg["args"]]
+    found = []
+    for entry in Path("/proc").iterdir():
+        if not entry.name.isdigit():
+            continue
+        pid = int(entry.name)
+        try:
+            if pid == state["pid"] or os.getsid(pid) != state["pid"] or os.getpgid(pid) != state["pid"]:
+                continue
+            ticks = start_ticks(pid)
+            if ticks is None or int(ticks) < int(state["start_ticks"]) or entry.stat().st_uid != os.geteuid():
+                continue
+            args = [os.fsdecode(a) for a in (entry / "cmdline").read_bytes().split(b"\0") if a]
+            if (not args or Path(args[0]).resolve() != exe or "--serve" not in args or
+                    (entry / "cwd").resolve() != cwd or not expected or
+                    not any(args[i:i + len(expected)] == expected for i in range(len(args)))):
+                continue
+            found.append({"pid": pid, "start_ticks": ticks})
+        except (FileNotFoundError, ProcessLookupError):
+            continue
+    return sorted(found, key=lambda p: p["pid"])
+
+
+def acquire_sleep_inhibitor(name):
+    """Acquire before spawning anything that can load a model; never fail open."""
+    try:
+        import dbus
+    except ImportError as error:
+        raise ValueError("Sleep protection requires python3-dbus for the controller's Python; no model started") from error
+    bus = None
+    try:
+        bus = dbus.SystemBus(private=True)
+        proxy = bus.get_object("org.freedesktop.login1", "/org/freedesktop/login1", introspect=False)
+        manager = dbus.Interface(proxy, "org.freedesktop.login1.Manager")
+        fd = manager.Inhibit("sleep", "local-llm", f"{name} is loaded; stop it before sleeping",
+                             "block", timeout=10).take()
+        try:
+            properties = dbus.Interface(proxy, "org.freedesktop.DBus.Properties")
+            if properties.Get("org.freedesktop.login1.Manager", "PreparingForSleep", timeout=10):
+                raise ValueError("System is already preparing for sleep; no model started")
+        except BaseException:
+            os.close(fd)
+            raise
+        return fd
+    except dbus.DBusException as error:
+        raise ValueError(f"Could not acquire sleep inhibitor; no model started: {error}") from error
+    finally:
+        if bus is not None:
+            bus.close()
+
+
+def sleep_inhibitor(state):
+    if not state or not state.get("config"):
+        return {"held": False}
+    path = Path(state["config"]).with_name("sleep-inhibitor.json")
+    if path.is_symlink():
+        raise ValueError("Refusing symlinked sleep inhibitor receipt")
+    try:
+        receipt = read_json(path)
+        pid = receipt["pid"]
+        args = Path(f"/proc/{pid}/cmdline").read_bytes().split(b"\0")
+        held = (start_ticks(pid) == receipt["start_ticks"] and
+                os.fsencode(SLEEP_HELPER) in args and b"guard" in args and
+                os.fsencode(state["config"]) in args and
+                Path(f"/proc/{pid}/fd/{receipt['fd']}").exists())
+        return {**receipt, "held": held}
+    except (FileNotFoundError, ProcessLookupError):
+        return {"held": False}
+
+
+def wait_sleep_inhibitor(state, timeout):
+    inhibitor = sleep_inhibitor(state)
+    if not inhibitor["held"]:
+        return True
+    try:
+        fd = os.pidfd_open(inhibitor["pid"])
+    except ProcessLookupError:
+        return True
+    try:
+        if not sleep_inhibitor(state)["held"]:
+            return True
+        return bool(select.select([fd], [], [], max(0, timeout))[0])
+    finally:
+        os.close(fd)
+
+
 def request(path, key="", body=None, timeout=3):
     headers = {"Content-Type": "application/json"}
     if key:
@@ -263,17 +356,24 @@ def start(name, timeout=600):
         if owned_live(old):
             if old["recipe"] != name:
                 raise ValueError(f"{old['recipe']} is already {old['status']}; run bash stop.sh before switching")
+            if not sleep_inhibitor(old)["held"]:
+                raise ValueError("Running service has no sleep inhibitor; stop it before starting again")
             print(json.dumps({"status": old["status"], "recipe": name, "already_running": True}))
             return
+        if native_processes(old):
+            raise ValueError("Native engine children are still running; run bash stop.sh before starting another service")
         lock = lock_file("service.lock")
         recipe_locks = []
-        child, registered = None, False
+        child, registered, inhibitor_fd = None, False, None
         try:
             try:
                 fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
             except BlockingIOError:
                 raise BusyError("Service lock is held; no process was started or stopped")
             with socket.socket() as sock:
+                # Match the Linux server: closed connections in TIME_WAIT are reusable,
+                # but an active listener still refuses this exclusive bind (no REUSEPORT).
+                sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
                 sock.bind((HOST, PORT))
             cfg, python, original_env = validate(r)
             for relative in r.get("locks", []):
@@ -300,10 +400,15 @@ def start(name, timeout=600):
                        [python, "-u", str(source / "serve/server.py")])
             command += ["--engine", "maya" if r["kind"].startswith("maya-") else "strata",
                         "--config", str(config), "--host", HOST, "--port", str(PORT)]
+            inhibitor_fd = acquire_sleep_inhibitor(name)
+            lock_fds = (lock.fileno(), *(s.fileno() for s in recipe_locks))
+            launch = [python, "-u", str(SLEEP_HELPER), "run", "--fd", str(inhibitor_fd)]
+            for fd in lock_fds:
+                launch += ["--lock-fd", str(fd)]
             with log.open("xb") as output:
-                child = subprocess.Popen(command, cwd=source, env=env, stdin=subprocess.DEVNULL,
+                child = subprocess.Popen([*launch, "--", *command], cwd=source, env=env, stdin=subprocess.DEVNULL,
                                          stdout=output, stderr=subprocess.STDOUT, start_new_session=True,
-                                         pass_fds=(lock.fileno(), *(s.fileno() for s in recipe_locks)))
+                                         pass_fds=(*lock_fds, inhibitor_fd))
                 _CHILDREN[child.pid] = child
             ticks = start_ticks(child.pid)
             if ticks is None:
@@ -323,6 +428,8 @@ def start(name, timeout=600):
                 _CHILDREN.pop(child.pid, None)
             raise
         finally:
+            if inhibitor_fd is not None:
+                os.close(inhibitor_fd)
             # No LOCK_UN: the inherited open-file description keeps this locked in the server.
             lock.close()
             for stream in recipe_locks:
@@ -337,7 +444,10 @@ def start(name, timeout=600):
                 raise ValueError(f"Still starting after {timeout}s; left running. See bash status.sh and {log}")
             time.sleep(0.5)
         else:
-            update_state(state, status="ready")
+            if not sleep_inhibitor(state)["held"]:
+                update_state(state, status="unprotected")
+                raise ValueError("Sleep inhibitor is not held; service left running for explicit stop")
+            update_state(state, status="ready", native_processes=native_processes(state))
             print(json.dumps({"status": "ready", "recipe": name, "context": state["context"],
                               "url": f"http://{HOST}:{PORT}/v1", "pid": state["pid"]}))
             return
@@ -347,28 +457,69 @@ def start(name, timeout=600):
     raise ValueError(f"Server ended before readiness; see {log}")
 
 
-def stop(timeout=120):
+def stop(timeout=120, force=False):
     with control_lock():
         state = current()
-        if not owned_live(state):
+        parent_live = owned_live(state)
+        engines = native_processes(state)
+        if not parent_live and not engines:
+            if not wait_sleep_inhibitor(state, timeout):
+                raise ValueError("Sleep inhibitor is still releasing; no live model process found")
             print("No owned live service to stop.")
             return
-        fd = os.pidfd_open(state["pid"])
+        targets = [(p, False) for p in engines]
+        if parent_live:
+            targets.append(({"pid": state["pid"], "start_ticks": state["start_ticks"]}, True))
+        handles = {}
         try:
-            # Recheck after opening the pidfd so PID reuse cannot redirect the signal.
-            if not owned_live(state):
-                raise ValueError("Process identity changed; no signal was sent")
-            write_json(STATE / "service.json", {**state, "status": "stopping"})
-            signal.pidfd_send_signal(fd, signal.SIGTERM)
-            if not select.select([fd], [], [], timeout)[0]:
-                raise ValueError("Graceful stop timed out; process left stopping, no SIGKILL sent")
+            for target, parent in targets:
+                try:
+                    fd = os.pidfd_open(target["pid"])
+                except ProcessLookupError:
+                    continue
+                handles[fd] = target["pid"]
+                # Hold pidfds before signalling; never redirect a signal after PID reuse.
+                if parent:
+                    valid = owned_live(state)
+                else:
+                    valid = target in native_processes(state)
+                if not valid:
+                    raise ValueError("Process identity changed; no signal was sent")
+            stopping = {**state, "status": "stopping", "native_processes": engines}
+            write_json(STATE / "service.json", stopping)
+            sig = signal.SIGKILL if force else signal.SIGTERM
+            for fd in handles:
+                try:
+                    signal.pidfd_send_signal(fd, sig)
+                except ProcessLookupError:
+                    pass
+            pending = set(handles)
+            deadline = time.monotonic() + timeout
+            while pending:
+                ready = select.select(list(pending), [], [], max(0, deadline - time.monotonic()))[0]
+                if not ready:
+                    break
+                pending.difference_update(ready)
+            remaining = native_processes(state)
+            parent_remains = owned_live(state)
+            if pending or remaining or parent_remains:
+                pids = sorted({handles[fd] for fd in pending} | {p["pid"] for p in remaining} |
+                              ({state["pid"]} if parent_remains else set()))
+                write_json(STATE / "service.json", {**stopping, "native_processes": remaining,
+                           "remaining_pids": pids, "stop_signal": sig.name})
+                detail = "SIGKILL sent but processes remain; they may be stuck in the driver" if force else "no SIGKILL sent; use --force to force-stop"
+                raise ValueError(f"Stop timed out; PIDs {pids} left stopping, {detail}")
+            if not wait_sleep_inhibitor(state, deadline - time.monotonic()):
+                raise ValueError("Model processes exited but sleep inhibitor is still releasing; left stopping")
         finally:
-            os.close(fd)
+            for fd in handles:
+                os.close(fd)
         child = _CHILDREN.pop(state["pid"], None)
         if child is not None:
             child.wait(timeout=5)
-        write_json(STATE / "service.json", {**state, "status": "stopped", "stopped_at": time.time()})
-        print(f"Stopped {state['recipe']} gracefully.")
+        write_json(STATE / "service.json", {**state, "status": "stopped", "native_processes": [],
+                   "remaining_pids": [], "stopped_at": time.time()})
+        print(f"Stopped {state['recipe']} {'forcibly' if force else 'gracefully'} (wrapper and native engines).")
 
 
 def status():
@@ -376,14 +527,19 @@ def status():
     if not state:
         return {"status": "stopped", "recipe": None}
     out = dict(state)
+    out["sleep_inhibitor"] = sleep_inhibitor(state)
     if not owned_live(state):
-        out["status"] = "stopped" if state["status"] == "stopped" else "failed"
+        engines = native_processes(state)
+        out["native_processes"] = engines
+        out["status"] = ("stopping" if state["status"] == "stopping" else "orphaned") if engines else \
+            "stopped" if state["status"] == "stopped" else "failed"
     else:
         try:
             r = recipe(state["recipe"])
             key = os.environ.get("LOCAL_LLM_API_KEY") or recipe_env(r).get("STRATA_API_KEY", "")
             health_check(state, key)
-            out["status"] = "ready"
+            if out["status"] != "stopping":
+                out["status"] = "ready" if out["sleep_inhibitor"]["held"] else "unprotected"
         except (OSError, ValueError) as error:
             out["health_error"] = str(error)
             if out["status"] == "ready":
@@ -412,8 +568,11 @@ def main():
     parser.add_argument("action", choices=("list", "check", "start", "stop", "status", "smoke"))
     parser.add_argument("recipe", nargs="*")
     parser.add_argument("--timeout", type=float)
+    parser.add_argument("--force", action="store_true", help="stop: send SIGKILL to verified wrapper and engine children")
     parser.add_argument("--json", action="store_true", help="status is always JSON")
     args = parser.parse_args()
+    if args.force and args.action != "stop":
+        parser.error("--force is only valid for stop")
     if args.timeout is not None and args.timeout <= 0:
         parser.error("timeout must be positive")
     name = selector(args.recipe) if args.recipe else None
@@ -431,7 +590,7 @@ def main():
     elif args.action == "start":
         start(name, args.timeout or 600)
     elif args.action == "stop":
-        stop(args.timeout or 120)
+        stop(args.timeout or 120, force=args.force)
     elif args.action == "status":
         print(json.dumps(status(), indent=2))
     else:

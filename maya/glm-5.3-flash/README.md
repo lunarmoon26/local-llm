@@ -6,6 +6,8 @@
 - Two RTX PRO 6000 Blackwell 96-GB GPUs, automatic layer split, 4096-MiB reserve.
 - 524288 context capacity, FP16 KV, KV streaming off, automatic prefill, one conversation.
 - Built-in MTP; no vision, external drafter, suffix drafting or approximate skipping.
+- Periodic prompt checkpoints every 65536 tokens (`MAYA_GLM_CKPT_EVERY`);
+  system-prompt and turn-boundary checkpoints remain enabled.
 - API model: `glm-5.3-flash` at `http://127.0.0.1:8080/v1`.
 
 ## Commands
@@ -32,5 +34,20 @@ The model folder is Maya's default `models/Maya-L/`.
 
 Start requires at least 84000 MiB free on each selected GPU. Keep API keys in
 the private environment. Full 512K-input quality and memory usage are unqualified.
+
+## Measured performance
+
+On this machine with Maya v1.1.55, a fresh 51681-token system prompt and 64-token
+greedy output takes 30.93 seconds (two runs), versus 39.36 seconds with 16384-token
+periodic checkpoints (four bracketing runs): 21.4% lower latency. Two cached
+128-token follow-ups total 2.78 seconds, versus 2.76 seconds in the control.
+Arithmetic, JSON, tool arguments and English/Chinese retrieval of records near
+the beginning, middle and end of the input pass. This is not a full quality suite.
+
+Wider checkpoint spacing reduces prefill pipeline drains, but editing older long
+input can require rereading more tokens. Prefill boundaries can change greedy
+wording; bit-identical output is not guaranteed. Decode settings and model weights
+are unchanged. The local receipts are under
+`state/experiments/checkpoint-confirm-20261106/` at the repository root (untracked).
 
 CPU tests: `(cd ../.. && python3 -m unittest discover -s tests -v)`.

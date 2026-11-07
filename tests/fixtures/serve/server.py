@@ -1,6 +1,8 @@
 """Tiny CPU-only fake server for lifecycle tests; never imports an inference engine."""
 import argparse
 import json
+import subprocess
+import sys
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from pathlib import Path
 
@@ -13,6 +15,12 @@ a = p.parse_args()
 cfg = json.loads(Path(a.config).read_text())
 if cfg.get("test_fail"):
     raise SystemExit(23)
+if cfg.get("test_spawn_engine"):
+    command = [cfg["exe"], str(Path(__file__).with_name("native.py")), "--serve", *cfg["args"]]
+    if cfg.get("test_stubborn_engine"):
+        command.append("--ignore-term")
+    engine = subprocess.Popen(command)
+    Path(a.config).with_name("native-pid.txt").write_text(str(engine.pid))
 
 
 class Handler(BaseHTTPRequestHandler):
